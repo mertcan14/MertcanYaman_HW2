@@ -6,14 +6,22 @@
 //
 
 import UIKit
+import NewsAPI
 
 class ViewController: UIViewController {
 
+    let service: TopStoriesServiceProtocol = TopStoriesService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        service.fetchTopStories(.home) { result in
+            switch result {
+            case .success(let data):
+                print(data)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
-
-
 }
 
