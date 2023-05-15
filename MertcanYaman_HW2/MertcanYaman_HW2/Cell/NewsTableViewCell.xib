@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsTableViewCell" rowHeight="216" id="KGk-i7-Jjw" customClass="NewsTableViewCell" customModule="MertcanYaman_HW2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="330" height="216"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="330" height="216"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QI4-lB-bRz">
+                        <rect key="frame" x="12" y="6" width="306" height="202"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BmM-Xh-6HM">
+                                <rect key="frame" x="0.0" y="102" width="306" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SCIENCE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGc-uc-Xea">
+                                        <rect key="frame" x="12" y="12" width="282" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="15" id="oWR-Nd-kjr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ISRO holds static test of Gaganyaan escape motor" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="qFR-ca-7Zm">
+                                        <rect key="frame" x="12" y="35" width="282" height="53"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="QGc-uc-Xea" firstAttribute="leading" secondItem="BmM-Xh-6HM" secondAttribute="leading" constant="12" id="5RY-DZ-49e"/>
+                                    <constraint firstItem="qFR-ca-7Zm" firstAttribute="top" secondItem="QGc-uc-Xea" secondAttribute="bottom" constant="8" id="AaB-hQ-wIV"/>
+                                    <constraint firstItem="QGc-uc-Xea" firstAttribute="top" secondItem="BmM-Xh-6HM" secondAttribute="top" constant="12" id="AiT-0C-Wge"/>
+                                    <constraint firstItem="qFR-ca-7Zm" firstAttribute="leading" secondItem="BmM-Xh-6HM" secondAttribute="leading" constant="12" id="ELB-FT-bcW"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="MZH-rg-hK3"/>
+                                    <constraint firstAttribute="trailing" secondItem="qFR-ca-7Zm" secondAttribute="trailing" constant="12" id="Nsm-ab-vAW"/>
+                                    <constraint firstAttribute="height" constant="100" id="sYA-Zu-BbA"/>
+                                    <constraint firstAttribute="trailing" secondItem="QGc-uc-Xea" secondAttribute="trailing" constant="12" id="wPM-YC-eLd"/>
+                                    <constraint firstAttribute="bottom" secondItem="qFR-ca-7Zm" secondAttribute="bottom" constant="12" id="yW7-ZI-vKk"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle 37" translatesAutoresizingMaskIntoConstraints="NO" id="wBa-0M-z5E">
+                                <rect key="frame" x="0.0" y="4" width="306" height="98"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BmM-Xh-6HM" firstAttribute="top" secondItem="wBa-0M-z5E" secondAttribute="bottom" id="8S1-7N-cbj"/>
+                            <constraint firstAttribute="trailing" secondItem="BmM-Xh-6HM" secondAttribute="trailing" id="G4O-Sv-g6w"/>
+                            <constraint firstAttribute="bottom" secondItem="BmM-Xh-6HM" secondAttribute="bottom" id="dvN-l0-Xu2"/>
+                            <constraint firstItem="wBa-0M-z5E" firstAttribute="leading" secondItem="QI4-lB-bRz" secondAttribute="leading" id="fi8-o6-SVP"/>
+                            <constraint firstItem="BmM-Xh-6HM" firstAttribute="leading" secondItem="QI4-lB-bRz" secondAttribute="leading" id="pD5-h9-ToS"/>
+                            <constraint firstItem="wBa-0M-z5E" firstAttribute="top" secondItem="QI4-lB-bRz" secondAttribute="top" constant="4" id="qSy-Tr-H5a"/>
+                            <constraint firstAttribute="trailing" secondItem="wBa-0M-z5E" secondAttribute="trailing" id="y9e-yH-3Ax"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="QI4-lB-bRz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="F2K-yr-fth"/>
+                    <constraint firstAttribute="trailing" secondItem="QI4-lB-bRz" secondAttribute="trailing" constant="12" id="Sfk-lC-aOL"/>
+                    <constraint firstAttribute="bottom" secondItem="QI4-lB-bRz" secondAttribute="bottom" constant="8" id="hC6-v0-7O5"/>
+                    <constraint firstItem="QI4-lB-bRz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="zDl-bd-Sv1"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="newsImageView" destination="wBa-0M-z5E" id="a3H-rc-aoJ"/>
+                <outlet property="outerView" destination="QI4-lB-bRz" id="2x6-Xb-CTB"/>
+                <outlet property="sectionLabel" destination="QGc-uc-Xea" id="KyF-Nd-iks"/>
+                <outlet property="titleLabel" destination="qFR-ca-7Zm" id="QIC-dl-Qia"/>
+            </connections>
+            <point key="canvasLocation" x="132.30769230769229" y="81.753554502369667"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Rectangle 37" width="350" height="100"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

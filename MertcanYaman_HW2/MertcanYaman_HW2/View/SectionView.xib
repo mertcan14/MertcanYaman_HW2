@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SectionView" customModule="MertcanYaman_HW2" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="EHU-hG-LMI" id="go3-vo-2gb"/>
+                <outlet property="outerView" destination="Pbc-nG-5Ak" id="IrB-Wo-Ug4"/>
+                <outlet property="sectionLabel" destination="avg-Th-L92" id="Z5V-ko-Ux8"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="110" height="30"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EHU-hG-LMI">
+                    <rect key="frame" x="0.0" y="0.0" width="110" height="30"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pbc-nG-5Ak">
+                            <rect key="frame" x="0.0" y="0.0" width="110" height="30"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="avg-Th-L92">
+                                    <rect key="frame" x="0.0" y="0.0" width="110" height="30"/>
+                                    <fontDescription key="fontDescription" name="Georgia-BoldItalic" family="Georgia" pointSize="14"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="avg-Th-L92" firstAttribute="leading" secondItem="Pbc-nG-5Ak" secondAttribute="leading" id="RHh-Vf-T4l"/>
+                                <constraint firstItem="avg-Th-L92" firstAttribute="top" secondItem="Pbc-nG-5Ak" secondAttribute="top" id="Rkh-e0-Tre"/>
+                                <constraint firstAttribute="bottom" secondItem="avg-Th-L92" secondAttribute="bottom" id="ey3-qR-pWk"/>
+                                <constraint firstAttribute="trailing" secondItem="avg-Th-L92" secondAttribute="trailing" id="gDb-9S-vDE"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="12"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Pbc-nG-5Ak" secondAttribute="bottom" id="Err-7E-HbL"/>
+                        <constraint firstAttribute="trailing" secondItem="Pbc-nG-5Ak" secondAttribute="trailing" id="KjA-xt-4lP"/>
+                        <constraint firstItem="Pbc-nG-5Ak" firstAttribute="top" secondItem="EHU-hG-LMI" secondAttribute="top" id="X6L-nq-lYz"/>
+                        <constraint firstItem="Pbc-nG-5Ak" firstAttribute="leading" secondItem="EHU-hG-LMI" secondAttribute="leading" id="Zj9-Ko-54G"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="EHU-hG-LMI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LNg-37-wEh"/>
+                <constraint firstAttribute="bottom" secondItem="EHU-hG-LMI" secondAttribute="bottom" id="TU1-US-r75"/>
+                <constraint firstItem="EHU-hG-LMI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="U6y-f7-60B"/>
+                <constraint firstAttribute="trailing" secondItem="EHU-hG-LMI" secondAttribute="trailing" id="cMO-cA-21f"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-87.692307692307693" y="309.24170616113742"/>
+        </view>
+    </objects>
+</document>
