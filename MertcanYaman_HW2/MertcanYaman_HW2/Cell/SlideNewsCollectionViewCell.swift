@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class SlideNewsCollectionViewCell: UICollectionViewCell {
 
@@ -23,18 +24,17 @@ class SlideNewsCollectionViewCell: UICollectionViewCell {
     func setup(_ newsPreview: NewsPreview, left: Bool, right: Bool) {
         self.titleLabel.text = newsPreview.title
         sectionView.setup(newsPreview.section, backgroundColor: UIColor(red: 55/255, green: 71/255, blue: 79/255, alpha: 1))
+        guard let imageUrl = URL(string: newsPreview.largeImageName) else { return }
+        self.newsImageView.sd_setImage(with: imageUrl)
         if left {
             leftArrow.isHidden = false
-            self.newsImageView.image = UIImage(named: "haber1")
         }else {
             leftArrow.isHidden = true
-            self.newsImageView.image = UIImage(named: "haber2")
         }
         if right {
             rightArrow.isHidden = false
         }else {
             rightArrow.isHidden = true
-            self.newsImageView.image = UIImage(named: "haber3")
         }
     }
 }

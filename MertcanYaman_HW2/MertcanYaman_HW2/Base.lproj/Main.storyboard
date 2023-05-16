@@ -25,8 +25,8 @@
                             <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O1F-rX-yuv">
                                 <rect key="frame" x="0.0" y="91" width="390" height="719"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5hS-Wc-Eet">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="747"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="5hS-Wc-Eet">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="759"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NyA-sd-V1f">
                                                 <rect key="frame" x="0.0" y="0.0" width="390" height="220"/>
@@ -47,13 +47,13 @@
                                                 </connections>
                                             </collectionView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latest News" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mv7-Vm-QIx">
-                                                <rect key="frame" x="0.0" y="220" width="390" height="27"/>
+                                                <rect key="frame" x="0.0" y="226" width="390" height="27"/>
                                                 <fontDescription key="fontDescription" name="GeezaPro-Bold" family="Geeza Pro" pointSize="22"/>
                                                 <color key="textColor" red="0.21568627450980393" green="0.27843137254901962" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fFq-Is-49A">
-                                                <rect key="frame" x="0.0" y="247" width="390" height="500"/>
+                                                <rect key="frame" x="0.0" y="259" width="390" height="500"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="500" id="cQG-cN-48o"/>
@@ -133,10 +133,7 @@
                                                 <rect key="frame" x="0.0" y="260" width="390" height="390"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agl-zW-ekX">
-                                                        <rect key="frame" x="12" y="50" width="366" height="48"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="48" id="zvA-aH-ChP"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="12" y="50" width="366" height="22.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="GeezaPro-Bold" family="Geeza Pro" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -150,14 +147,14 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3Q-Nk-PAm">
-                                                        <rect key="frame" x="12" y="105.99999999999999" width="366" height="57.333333333333329"/>
+                                                        <rect key="frame" x="12" y="80.333333333333314" width="366" height="57.333333333333343"/>
                                                         <string key="text">LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel</string>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYO-YW-eXV">
-                                                        <rect key="frame" x="38" y="201.33333333333337" width="314" height="39"/>
+                                                        <rect key="frame" x="38" y="175.66666666666663" width="314" height="39"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="filled">
                                                             <attributedString key="attributedTitle">
@@ -169,6 +166,9 @@
                                                             </attributedString>
                                                             <color key="baseBackgroundColor" red="0.2156862745" green="0.2784313725" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="goWebButtunClicked:" destination="LfH-2V-6of" eventType="touchUpInside" id="HYL-yq-4pL"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -238,6 +238,7 @@
                     </view>
                     <connections>
                         <outlet property="contentLabel" destination="i3Q-Nk-PAm" id="ZOi-1N-tBm"/>
+                        <outlet property="detailImageView" destination="XaS-mL-SS0" id="Rny-w7-mDA"/>
                         <outlet property="myNavigationBar" destination="M1T-Te-F7p" id="k4V-aj-AMq"/>
                         <outlet property="sectionView" destination="I0F-MQ-Lqr" id="RBK-Qy-fxj"/>
                         <outlet property="titleLabel" destination="agl-zW-ekX" id="gcG-Zh-U4q"/>
@@ -272,7 +273,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrowshape.backward" catalog="system" width="32" height="32"/>
+        <image name="arrowshape.backward" catalog="system" width="128" height="104"/>
         <image name="haber2" width="600" height="400"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

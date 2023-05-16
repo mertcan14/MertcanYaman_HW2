@@ -12,23 +12,31 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewsCollectionViewCell" id="gTV-IL-0wX" customClass="NewsCollectionViewCell" customModule="MertcanYaman_HW2" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="330" height="216"/>
+            <rect key="frame" x="0.0" y="0.0" width="330" height="330"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="330" height="216"/>
+                <rect key="frame" x="0.0" y="0.0" width="330" height="330"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkw-kx-hmT">
-                        <rect key="frame" x="0.0" y="0.0" width="330" height="216"/>
+                        <rect key="frame" x="0.0" y="0.0" width="330" height="330"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AY3-kU-vOp">
-                                <rect key="frame" x="8" y="4" width="314" height="202"/>
+                                <rect key="frame" x="8" y="0.0" width="314" height="320"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="deneme" translatesAutoresizingMaskIntoConstraints="NO" id="Upo-mc-1cA">
-                                        <rect key="frame" x="0.0" y="0.0" width="314" height="103"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="haber1" translatesAutoresizingMaskIntoConstraints="NO" id="Upo-mc-1cA">
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="209.33333333333334"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Upo-mc-1cA" secondAttribute="height" multiplier="3:2" id="ysh-UY-3eV"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="24"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hf-JD-kmC">
-                                        <rect key="frame" x="0.0" y="103" width="314" height="99"/>
+                                        <rect key="frame" x="0.0" y="209.33333333333334" width="314" height="62.666666666666657"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjd-hE-gLH">
                                                 <rect key="frame" x="8" y="7.9999999999999991" width="298" height="15.666666666666664"/>
@@ -40,7 +48,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="AH2-a6-OS3">
-                                                <rect key="frame" x="8" y="29.666666666666661" width="298" height="61.333333333333343"/>
+                                                <rect key="frame" x="8" y="29.666666666666657" width="298" height="25"/>
                                                 <fontDescription key="fontDescription" name="Georgia-Bold" family="Georgia" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -65,14 +73,13 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="5hf-JD-kmC" firstAttribute="top" secondItem="Upo-mc-1cA" secondAttribute="bottom" id="Huj-jm-P1f"/>
-                                    <constraint firstAttribute="bottom" secondItem="5hf-JD-kmC" secondAttribute="bottom" id="KPk-qj-gMi"/>
+                                    <constraint firstItem="5hf-JD-kmC" firstAttribute="height" secondItem="Upo-mc-1cA" secondAttribute="height" multiplier="0.3" id="NVr-xY-UF0"/>
                                     <constraint firstAttribute="trailing" secondItem="5hf-JD-kmC" secondAttribute="trailing" id="NmV-dK-GOf"/>
+                                    <constraint firstItem="5hf-JD-kmC" firstAttribute="top" secondItem="Upo-mc-1cA" secondAttribute="bottom" id="UHb-Zc-smm"/>
                                     <constraint firstItem="5hf-JD-kmC" firstAttribute="leading" secondItem="AY3-kU-vOp" secondAttribute="leading" id="Yg2-gP-zfC"/>
                                     <constraint firstItem="Upo-mc-1cA" firstAttribute="leading" secondItem="AY3-kU-vOp" secondAttribute="leading" id="Zvb-Fp-VZX"/>
                                     <constraint firstAttribute="trailing" secondItem="Upo-mc-1cA" secondAttribute="trailing" id="axP-Lj-Z1J"/>
                                     <constraint firstItem="Upo-mc-1cA" firstAttribute="top" secondItem="AY3-kU-vOp" secondAttribute="top" id="etE-8V-Coq"/>
-                                    <constraint firstItem="5hf-JD-kmC" firstAttribute="height" secondItem="AY3-kU-vOp" secondAttribute="height" multiplier="0.490196" id="rMM-pZ-9T8"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -83,7 +90,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="AY3-kU-vOp" firstAttribute="top" secondItem="pkw-kx-hmT" secondAttribute="top" constant="4" id="6SL-Ff-Gf1"/>
+                            <constraint firstItem="AY3-kU-vOp" firstAttribute="top" secondItem="pkw-kx-hmT" secondAttribute="top" id="6SL-Ff-Gf1"/>
                             <constraint firstAttribute="trailing" secondItem="AY3-kU-vOp" secondAttribute="trailing" constant="8" id="8vb-7B-K2y"/>
                             <constraint firstAttribute="bottom" secondItem="AY3-kU-vOp" secondAttribute="bottom" constant="10" id="TNu-kD-i6d"/>
                             <constraint firstItem="AY3-kU-vOp" firstAttribute="leading" secondItem="pkw-kx-hmT" secondAttribute="leading" constant="8" id="Vd3-j1-w6e"/>
@@ -103,18 +110,18 @@
                 <constraint firstAttribute="bottom" secondItem="pkw-kx-hmT" secondAttribute="bottom" id="fCn-fm-mXZ"/>
                 <constraint firstAttribute="trailing" secondItem="pkw-kx-hmT" secondAttribute="trailing" id="oQy-jo-eHk"/>
             </constraints>
-            <size key="customSize" width="364" height="156"/>
+            <size key="customSize" width="364" height="269"/>
             <connections>
                 <outlet property="newsImageView" destination="Upo-mc-1cA" id="JE0-ZF-ieV"/>
                 <outlet property="outerView" destination="AY3-kU-vOp" id="Ybd-Yx-leP"/>
                 <outlet property="sectionLabel" destination="hjd-hE-gLH" id="OAs-vm-jKu"/>
                 <outlet property="titleLabel" destination="AH2-a6-OS3" id="g1I-fF-YpC"/>
             </connections>
-            <point key="canvasLocation" x="381.53846153846155" y="58.293838862559241"/>
+            <point key="canvasLocation" x="381.53846153846155" y="97.393364928909946"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="deneme" width="350" height="100"/>
+        <image name="haber1" width="600" height="400"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

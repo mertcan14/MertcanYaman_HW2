@@ -51,7 +51,9 @@ final class HomeViewModel {
     private func setArray() {
         var newsPreviewArray: [NewsPreview] = []
         for newsObj in news {
-            newsPreviewArray.append(NewsPreview(title: newsObj.title ?? "", section: newsObj.section ?? "", imageName: ""))
+            guard let small = newsObj.multimedia?[2].url else { return }
+            guard let large = newsObj.multimedia?[1].url else { return }
+            newsPreviewArray.append(NewsPreview(title: newsObj.title ?? "", section: newsObj.section ?? "", author: newsObj.byline ?? "", largeImageName: large, smalImageName: small))
         }
         newsPreviews = newsPreviewArray
     }

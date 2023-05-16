@@ -9,6 +9,8 @@ import UIKit
 class HomeViewController: UIViewController {
     
     var numberOfItemPerRow: CGFloat = 1
+    var collectionWidth: CGFloat = 0
+    var slideCollectionWidth: CGFloat = 0
     var collectionViewFlowLayout: UICollectionViewFlowLayout!
     var slideCollectionViewFlowLayout: UICollectionViewFlowLayout!
     var homeViewModel: HomeViewModelProtocol! {
@@ -24,8 +26,10 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionWidth = collectionView.frame.width
+        slideCollectionWidth = slideCollectionView.frame.width
         homeViewModel = HomeViewModel()
-        collectionView.register(UINib(nibName: "NewsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "NewsCollectionViewCell")
+        collectionView.register(UINib(nibName: "SmallNewsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SmallNewsCollectionViewCell")
         slideCollectionView.register(UINib(nibName: "SlideNewsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SlideNewsCollectionViewCell")
         homeViewModel.getData()
         setupCollectionViewLayout()
@@ -48,22 +52,19 @@ class HomeViewController: UIViewController {
         UIApplication.shared.statusBarStyle = .lightContent
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
         updateCollectionViewItemSize()
         updateSlideCollectionViewItemSize()
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animate(alongsideTransition: { context in
-            if UIApplication.shared.statusBarOrientation.isLandscape {
-                self.numberOfItemPerRow = 2
-            } else {
-                self.numberOfItemPerRow = 1
-            }
-            self.updateCollectionViewItemSize()
-            self.updateSlideCollectionViewItemSize()
-        })
+        if UIApplication.shared.statusBarOrientation.isLandscape {
+            self.numberOfItemPerRow = 2
+        } else {
+            self.numberOfItemPerRow = 1
+        }
     }
     
     private func setupCollectionViewLayout() {
@@ -71,12 +72,12 @@ class HomeViewController: UIViewController {
         collectionView.setCollectionViewLayout(self.collectionViewFlowLayout, animated: true)
         
         self.slideCollectionViewFlowLayout = UICollectionViewFlowLayout()
-        slideCollectionView.setCollectionViewLayout(slideCollectionViewFlowLayout, animated: true)
+        slideCollectionView.setCollectionViewLayout(self.slideCollectionViewFlowLayout, animated: true)
     }
     
     private func updateSlideCollectionViewItemSize() {
         let lineSpacing: CGFloat = 24
-        let width = slideCollectionView.frame.width - 24
+        let width = self.view.safeAreaLayoutGuide.layoutFrame.width - 24
         let height = 200
         
         slideCollectionViewFlowLayout.itemSize = CGSize(width: Int(width), height: height)
@@ -90,8 +91,8 @@ class HomeViewController: UIViewController {
     private func updateCollectionViewItemSize() {
         let lineSpacing: CGFloat = 2
         let interItemSpacing:CGFloat = 5
-        let width = ((collectionView.frame.width - (self.numberOfItemPerRow - 1) * interItemSpacing)) / self.numberOfItemPerRow
-        let height = 180
+        let width = ((self.view.safeAreaLayoutGuide.layoutFrame.width - (self.numberOfItemPerRow - 1) * interItemSpacing)) / self.numberOfItemPerRow
+        let height = 130
         
         collectionViewFlowLayout.itemSize = CGSize(width: Int(width), height: height)
         collectionViewFlowLayout.sectionInset = UIEdgeInsets.zero
@@ -112,7 +113,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.collectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewsCollectionViewCell", for: indexPath) as! NewsCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SmallNewsCollectionViewCell", for: indexPath) as! SmallNewsCollectionViewCell
             guard let model = homeViewModel.getNewsPreviews(indexPath.row + 4) else { return cell }
             cell.setup(model)
             return cell
@@ -125,19 +126,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let sendVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         if collectionView == self.collectionView {
-            let sendVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
             sendVC.newsModel = homeViewModel.getNews(indexPath.row + 4)
-            sendVC.modalPresentationStyle = .fullScreen
-            sendVC.modalTransitionStyle = .coverVertical
-            present(sendVC, animated: true, completion: nil)
         }else {
-            let sendVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
             sendVC.newsModel = homeViewModel.getNews(indexPath.row)
-            sendVC.modalPresentationStyle = .fullScreen
-            sendVC.modalTransitionStyle = .coverVertical
-            present(sendVC, animated: true, completion: nil)
         }
+        sendVC.modalPresentationStyle = .fullScreen
+        sendVC.modalTransitionStyle = .coverVertical
+        present(sendVC, animated: true, completion: nil)
     }
 }
 

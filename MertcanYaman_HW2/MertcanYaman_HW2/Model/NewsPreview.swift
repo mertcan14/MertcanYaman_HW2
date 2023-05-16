@@ -10,5 +10,7 @@ import Foundation
 struct NewsPreview {
     let title: String
     let section: String
-    let imageName: String
+    let author: String
+    let largeImageName: String
+    let smalImageName: String
 }

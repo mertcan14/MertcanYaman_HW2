@@ -7,24 +7,34 @@
 
 import UIKit
 import NewsAPI
+import SafariServices
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, SFSafariViewControllerDelegate {
     
+    @IBOutlet weak var detailImageView: UIImageView!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var sectionView: SectionView!
     @IBOutlet weak var myNavigationBar: UINavigationBar!
     
+    var detailViewModel: DetailViewModelProtocol! {
+        didSet {
+            detailViewModel.delegate = self
+        }
+    }
     var newsModel: News?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sectionView.setup(newsModel?.section ?? "", backgroundColor: UIColor(red: 55/255, green: 71/255, blue: 79/255, alpha: 1))
+        guard let news = newsModel else { return }
+        detailViewModel = DetailViewModel(news: news)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         titleLabel.text = newsModel?.title
         contentLabel.text = newsModel?.abstract
+        detailImageView.sd_setImage(with: detailViewModel.getImgUrlFromNews())
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
@@ -57,9 +67,20 @@ class DetailViewController: UIViewController {
             statusBar?.backgroundColor = UIColor.red
         }
     }
+    @IBAction func goWebButtunClicked(_ sender: Any) {
+        guard let url = self.detailViewModel.getDetailUrl() else { return }
+        let vc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+        vc.delegate = self
+        
+        present(vc, animated: true)
+    }
     
     @IBAction func clickBackButton(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
+    
+}
+
+extension DetailViewController: DetailViewModelDelegate {
     
 }
