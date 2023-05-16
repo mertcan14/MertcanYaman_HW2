@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var selectSecitonImage: UIImageView!
     @IBOutlet weak var outerView: UIView!
     @IBOutlet weak var slideCollectionView: UICollectionView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -34,6 +35,9 @@ class HomeViewController: UIViewController {
         homeViewModel.getData()
         setupCollectionViewLayout()
         loadingView.startAnimating()
+        
+        let sectionSelect = UITapGestureRecognizer(target: self, action: #selector(setSection))
+        self.selectSecitonImage.addGestureRecognizer(sectionSelect)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +71,11 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @objc func setSection() {
+        let sectionPopUp = SectionPopUp()
+        sectionPopUp.appear(sender: self)
+    }
+    
     private func setupCollectionViewLayout() {
         self.collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionView.setCollectionViewLayout(self.collectionViewFlowLayout, animated: true)
@@ -89,7 +98,7 @@ class HomeViewController: UIViewController {
     }
     
     private func updateCollectionViewItemSize() {
-        let lineSpacing: CGFloat = 2
+        let lineSpacing: CGFloat = 0
         let interItemSpacing:CGFloat = 5
         let width = ((self.view.safeAreaLayoutGuide.layoutFrame.width - (self.numberOfItemPerRow - 1) * interItemSpacing)) / self.numberOfItemPerRow
         let height = 130

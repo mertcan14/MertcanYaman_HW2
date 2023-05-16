@@ -30,6 +30,10 @@
 		E5C1B0282A0EFA26003853F4 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C1B0272A0EFA26003853F4 /* UIView+Extension.swift */; };
 		E5C1B02B2A0EFEED003853F4 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C1B0292A0EFEED003853F4 /* NewsCollectionViewCell.swift */; };
 		E5C1B02C2A0EFEED003853F4 /* NewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5C1B02A2A0EFEED003853F4 /* NewsCollectionViewCell.xib */; };
+		E5ED78202A13F99800A7F534 /* SectionPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ED781E2A13F99800A7F534 /* SectionPopUp.swift */; };
+		E5ED78212A13F99800A7F534 /* SectionPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5ED781F2A13F99800A7F534 /* SectionPopUp.xib */; };
+		E5ED78242A14097400A7F534 /* SectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ED78222A14097400A7F534 /* SectionTableViewCell.swift */; };
+		E5ED78252A14097400A7F534 /* SectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5ED78232A14097400A7F534 /* SectionTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +61,10 @@
 		E5C1B0272A0EFA26003853F4 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E5C1B0292A0EFEED003853F4 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5C1B02A2A0EFEED003853F4 /* NewsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCollectionViewCell.xib; sourceTree = "<group>"; };
+		E5ED781E2A13F99800A7F534 /* SectionPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionPopUp.swift; sourceTree = "<group>"; };
+		E5ED781F2A13F99800A7F534 /* SectionPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionPopUp.xib; sourceTree = "<group>"; };
+		E5ED78222A14097400A7F534 /* SectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTableViewCell.swift; sourceTree = "<group>"; };
+		E5ED78232A14097400A7F534 /* SectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +83,7 @@
 		E5974F9E2A1132690012C8C2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E5ED781D2A13F95F00A7F534 /* SectionPopUp */,
 				E5974F9F2A1132880012C8C2 /* SectionView.swift */,
 				E5974FA12A11329E0012C8C2 /* SectionView.xib */,
 			);
@@ -162,6 +171,8 @@
 				E59A52E32A0F7C9E004B8DEA /* SlideNewsCollectionViewCell.xib */,
 				E5978E952A1240EF0044F416 /* SmallNewsCollectionViewCell.swift */,
 				E5978E962A1240EF0044F416 /* SmallNewsCollectionViewCell.xib */,
+				E5ED78222A14097400A7F534 /* SectionTableViewCell.swift */,
+				E5ED78232A14097400A7F534 /* SectionTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -180,6 +191,15 @@
 				E5C1B0272A0EFA26003853F4 /* UIView+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		E5ED781D2A13F95F00A7F534 /* SectionPopUp */ = {
+			isa = PBXGroup;
+			children = (
+				E5ED781E2A13F99800A7F534 /* SectionPopUp.swift */,
+				E5ED781F2A13F99800A7F534 /* SectionPopUp.xib */,
+			);
+			path = SectionPopUp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,8 +269,10 @@
 			files = (
 				E5BDD5402A0D101C009C2661 /* LaunchScreen.storyboard in Resources */,
 				E5BDD53D2A0D101C009C2661 /* Assets.xcassets in Resources */,
+				E5ED78212A13F99800A7F534 /* SectionPopUp.xib in Resources */,
 				E5C1B0222A0EEF2B003853F4 /* NewsTableViewCell.xib in Resources */,
 				E59A52E52A0F7C9E004B8DEA /* SlideNewsCollectionViewCell.xib in Resources */,
+				E5ED78252A14097400A7F534 /* SectionTableViewCell.xib in Resources */,
 				E5C1B02C2A0EFEED003853F4 /* NewsCollectionViewCell.xib in Resources */,
 				E5978E982A1240EF0044F416 /* SmallNewsCollectionViewCell.xib in Resources */,
 				E5974FA22A11329E0012C8C2 /* SectionView.xib in Resources */,
@@ -268,7 +290,9 @@
 				E5C1B0282A0EFA26003853F4 /* UIView+Extension.swift in Sources */,
 				E59A52E92A0F80F3004B8DEA /* HomeViewModel.swift in Sources */,
 				E5974FA02A1132880012C8C2 /* SectionView.swift in Sources */,
+				E5ED78242A14097400A7F534 /* SectionTableViewCell.swift in Sources */,
 				E5978E972A1240EF0044F416 /* SmallNewsCollectionViewCell.swift in Sources */,
+				E5ED78202A13F99800A7F534 /* SectionPopUp.swift in Sources */,
 				E5C1B02B2A0EFEED003853F4 /* NewsCollectionViewCell.swift in Sources */,
 				E5BDD5382A0D101A009C2661 /* HomeViewController.swift in Sources */,
 				E59A52E42A0F7C9E004B8DEA /* SlideNewsCollectionViewCell.swift in Sources */,

@@ -61,7 +61,7 @@ public struct Multimedia: Decodable {
     public let caption, copyright: String?
 }
 
-public enum Section: String, Decodable {
+public enum Section: String, Decodable, CaseIterable {
     case arts = "arts"
     case automobiles = "automobiles"
     case books = "books"

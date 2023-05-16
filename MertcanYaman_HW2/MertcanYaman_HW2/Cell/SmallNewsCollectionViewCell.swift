@@ -9,6 +9,7 @@ import UIKit
 
 class SmallNewsCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var authorName: UILabel!
     @IBOutlet weak var outerView: UIView!
     @IBOutlet weak var sectionLabel: UILabel!
@@ -20,9 +21,9 @@ class SmallNewsCollectionViewCell: UICollectionViewCell {
 
     func setup(_ newsPreview: NewsPreview) {
         outerView.layer.shadowColor = UIColor.black.cgColor
-        outerView.layer.shadowOpacity = 0.2
+        outerView.layer.shadowOpacity = 0.8
         outerView.layer.shadowOffset = .zero
-        outerView.layer.shadowRadius = 12
+        outerView.layer.shadowRadius = 3
         self.titleLabel.text = newsPreview.title
         self.sectionLabel.text = newsPreview.section.uppercased()
         authorName.text = newsPreview.author

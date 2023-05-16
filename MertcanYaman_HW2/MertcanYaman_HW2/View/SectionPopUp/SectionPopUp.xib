@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SectionPopUp" customModule="MertcanYaman_HW2" customModuleProvider="target">
+            <connections>
+                <outlet property="backView" destination="oYd-dH-EGf" id="OiZ-ru-7S0"/>
+                <outlet property="contentView" destination="eA3-qc-vvf" id="x2J-Bh-xg0"/>
+                <outlet property="sectionTableView" destination="Ff6-PL-GNY" id="DQ6-wc-oHW"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYd-dH-EGf">
+                    <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eA3-qc-vvf">
+                    <rect key="frame" x="58.666666666666657" y="217.66666666666663" width="273" height="422"/>
+                    <subviews>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="34a-XN-yUk">
+                            <rect key="frame" x="0.0" y="0.0" width="273" height="422"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Ub4-bQ-VZG">
+                                    <rect key="frame" x="0.0" y="8" width="273" height="398.66666666666669"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Görmek istediğiniz haberleri işaretleyiniz." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AtW-pi-wyQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="273" height="39.333333333333336"/>
+                                            <fontDescription key="fontDescription" name="GeezaPro-Bold" family="Geeza Pro" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ff6-PL-GNY">
+                                            <rect key="frame" x="0.0" y="51.333333333333343" width="273" height="295.33333333333326"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        </tableView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9s-G7-n5e">
+                                            <rect key="frame" x="0.0" y="358.66666666666674" width="273" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="FSC-80-cse"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="filled" title="Gönder">
+                                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <color key="baseBackgroundColor" red="0.2156862745" green="0.2784313725" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            </buttonConfiguration>
+                                            <connections>
+                                                <action selector="submitButtonClicked:" destination="-1" eventType="touchUpInside" id="F8h-ZL-qlR"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="Ub4-bQ-VZG" firstAttribute="leading" secondItem="34a-XN-yUk" secondAttribute="leading" id="2Cy-i7-0sT"/>
+                                <constraint firstItem="Ub4-bQ-VZG" firstAttribute="top" secondItem="34a-XN-yUk" secondAttribute="top" constant="8" id="AvH-QA-1Qw"/>
+                                <constraint firstAttribute="bottom" secondItem="Ub4-bQ-VZG" secondAttribute="bottom" id="kUa-a2-iYE"/>
+                                <constraint firstItem="Ub4-bQ-VZG" firstAttribute="width" secondItem="34a-XN-yUk" secondAttribute="width" id="wWs-zL-w4v"/>
+                                <constraint firstAttribute="trailing" secondItem="Ub4-bQ-VZG" secondAttribute="trailing" id="x6e-iO-thL"/>
+                            </constraints>
+                            <viewLayoutGuide key="contentLayoutGuide" id="2t8-QO-gnu"/>
+                            <viewLayoutGuide key="frameLayoutGuide" id="BIv-KH-nAF"/>
+                        </scrollView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="Ff6-PL-GNY" firstAttribute="height" secondItem="eA3-qc-vvf" secondAttribute="height" multiplier="0.7" id="2zB-Pe-FKT"/>
+                        <constraint firstAttribute="trailing" secondItem="34a-XN-yUk" secondAttribute="trailing" id="DNy-eF-wDV"/>
+                        <constraint firstItem="34a-XN-yUk" firstAttribute="leading" secondItem="eA3-qc-vvf" secondAttribute="leading" id="kFQ-0F-hBQ"/>
+                        <constraint firstAttribute="bottom" secondItem="34a-XN-yUk" secondAttribute="bottom" id="rFI-Dq-cfW"/>
+                        <constraint firstItem="34a-XN-yUk" firstAttribute="top" secondItem="eA3-qc-vvf" secondAttribute="top" id="t2Q-9N-xOa"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemRedColor"/>
+            <constraints>
+                <constraint firstItem="eA3-qc-vvf" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="89p-yp-YOb"/>
+                <constraint firstItem="eA3-qc-vvf" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="EKG-lZ-CKd"/>
+                <constraint firstItem="eA3-qc-vvf" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="Eko-dz-aTM"/>
+                <constraint firstAttribute="bottom" secondItem="oYd-dH-EGf" secondAttribute="bottom" id="I29-ZP-06n"/>
+                <constraint firstItem="oYd-dH-EGf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VLa-9M-bBs"/>
+                <constraint firstItem="eA3-qc-vvf" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.7" id="a93-cr-Ln5"/>
+                <constraint firstItem="oYd-dH-EGf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vM5-8Y-ZYX"/>
+                <constraint firstAttribute="trailing" secondItem="oYd-dH-EGf" secondAttribute="trailing" id="xfh-Fr-N6D"/>
+            </constraints>
+            <point key="canvasLocation" x="140" y="20.616113744075829"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
