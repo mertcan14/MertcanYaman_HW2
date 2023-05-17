@@ -42,30 +42,32 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="s46-YN-LSK">
-                                        <rect key="frame" x="123" y="70" width="333" height="16"/>
+                                        <rect key="frame" x="123" y="66" width="333" height="16"/>
                                         <fontDescription key="fontDescription" name="Georgia-BoldItalic" family="Georgia" pointSize="14"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DB1-Ha-xH3">
-                                        <rect key="frame" x="424.66666666666669" y="94" width="35.333333333333314" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L2h-F8-r2a" customClass="SectionView" customModule="MertcanYaman_HW2" customModuleProvider="target">
+                                        <rect key="frame" x="119" y="86" width="75" height="25"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="8O3-q5-sFd"/>
+                                            <constraint firstAttribute="height" constant="25" id="iVR-ZG-tI5"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="DB1-Ha-xH3" secondAttribute="trailing" constant="4" id="Aaf-8J-9n8"/>
                                     <constraint firstAttribute="trailing" secondItem="s46-YN-LSK" secondAttribute="trailing" constant="8" id="AqQ-yL-wA7"/>
-                                    <constraint firstItem="DB1-Ha-xH3" firstAttribute="top" secondItem="s46-YN-LSK" secondAttribute="bottom" constant="8" id="BCo-XC-lFd"/>
                                     <constraint firstItem="zM0-Fy-nZS" firstAttribute="top" secondItem="SAY-ym-1uk" secondAttribute="top" constant="8" id="D00-1x-cBy"/>
+                                    <constraint firstAttribute="bottom" secondItem="L2h-F8-r2a" secondAttribute="bottom" constant="4" id="Zs5-pf-qRs"/>
                                     <constraint firstAttribute="trailing" secondItem="zM0-Fy-nZS" secondAttribute="trailing" constant="8" id="c9h-Fr-Z6f"/>
                                     <constraint firstItem="s46-YN-LSK" firstAttribute="leading" secondItem="kC1-pP-8qE" secondAttribute="trailing" constant="8" symbolic="YES" id="cMR-T1-aIX"/>
+                                    <constraint firstItem="L2h-F8-r2a" firstAttribute="leading" secondItem="kC1-pP-8qE" secondAttribute="trailing" constant="4" id="eVb-uo-22x"/>
                                     <constraint firstItem="kC1-pP-8qE" firstAttribute="top" secondItem="SAY-ym-1uk" secondAttribute="top" id="hbM-mj-yHV"/>
                                     <constraint firstItem="kC1-pP-8qE" firstAttribute="leading" secondItem="SAY-ym-1uk" secondAttribute="leading" id="hv9-ma-Agk"/>
-                                    <constraint firstAttribute="bottom" secondItem="DB1-Ha-xH3" secondAttribute="bottom" constant="4" id="meM-Wv-E34"/>
                                     <constraint firstAttribute="bottom" secondItem="kC1-pP-8qE" secondAttribute="bottom" id="tOL-By-Vqu"/>
+                                    <constraint firstItem="L2h-F8-r2a" firstAttribute="top" secondItem="s46-YN-LSK" secondAttribute="bottom" constant="4" id="uQD-Y0-gVm"/>
                                     <constraint firstItem="zM0-Fy-nZS" firstAttribute="leading" secondItem="kC1-pP-8qE" secondAttribute="trailing" constant="8" symbolic="YES" id="zbv-i2-Sz5"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -97,7 +99,7 @@
                 <outlet property="authorName" destination="s46-YN-LSK" id="m9U-C0-3HJ"/>
                 <outlet property="containerView" destination="C07-Ub-GWk" id="O40-YQ-8hc"/>
                 <outlet property="outerView" destination="SAY-ym-1uk" id="4dT-aD-BCX"/>
-                <outlet property="sectionLabel" destination="DB1-Ha-xH3" id="lyC-6a-ra4"/>
+                <outlet property="sectionView" destination="L2h-F8-r2a" id="dwn-wH-QhN"/>
                 <outlet property="smallImageView" destination="kC1-pP-8qE" id="PNG-6A-dbJ"/>
                 <outlet property="titleLabel" destination="zM0-Fy-nZS" id="hom-TF-afA"/>
             </connections>

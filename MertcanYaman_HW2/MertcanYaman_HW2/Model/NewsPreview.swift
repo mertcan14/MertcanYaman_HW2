@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import NewsAPI
 
 struct NewsPreview {
     let title: String
-    let section: String
+    let section: Section
     let author: String
     let largeImageName: String
     let smalImageName: String

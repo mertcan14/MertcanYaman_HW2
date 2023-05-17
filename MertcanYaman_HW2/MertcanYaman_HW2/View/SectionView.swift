@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NewsAPI
 
 class SectionView: UIView {
     private var view: UIView!
@@ -22,10 +23,10 @@ class SectionView: UIView {
         super.init(coder: coder)
     }
     
-    func setup(_ section: String, backgroundColor: UIColor) {
+    func setup(_ section: Section) {
         self.configureView()
-        outerView.backgroundColor = backgroundColor
-        sectionLabel.text = section.uppercased()
+        outerView.backgroundColor = UIColor(hexString: section.getColor())
+        sectionLabel.text = section.rawValue.uppercased()
     }
     
     private func configureView() {

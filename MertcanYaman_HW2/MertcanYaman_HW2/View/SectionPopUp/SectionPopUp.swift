@@ -10,7 +10,12 @@ import NewsAPI
 
 class SectionPopUp: UIViewController {
     
-    @IBOutlet weak var sectionTableView: UITableView!
+    var numberOfItemPerRow: CGFloat = 3
+    var collectionViewFlowLayout: UICollectionViewFlowLayout!
+    var sections: [Section] = []
+    var selectedSections: [Section] = []
+    
+    @IBOutlet weak var sectionCollectionView: UICollectionView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var backView: UIView!
     
@@ -26,16 +31,58 @@ class SectionPopUp: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
+        setupCollectionViewLayout()
         
-        sectionTableView.delegate = self
-        sectionTableView.dataSource = self
-        sectionTableView.register(UINib(nibName: "SectionTableViewCell", bundle: nil), forCellReuseIdentifier: "SectionTableViewCell")
+        for section in Section.allCases {
+            if section != .home {
+                sections.append(section)
+            }
+        }
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(goBack))
+        backView.addGestureRecognizer(tap)
+        
+        sectionCollectionView.dataSource = self
+        sectionCollectionView.delegate = self
+        sectionCollectionView.register(UINib(nibName: "SectionCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SectionCollectionViewCell")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        switch UIDevice.current.orientation{
+        case .portrait:
+            numberOfItemPerRow = 3
+        case .landscapeLeft:
+            numberOfItemPerRow = 5
+        case .landscapeRight:
+            numberOfItemPerRow = 5
+        default:
+            numberOfItemPerRow = 3
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        updateCollectionViewItemSize()
+    }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        if UIApplication.shared.statusBarOrientation.isLandscape {
+            self.numberOfItemPerRow = 5
+        } else {
+            self.numberOfItemPerRow = 3
+        }
+    }
+    
+    @objc func goBack() {
+        hide()
     }
     
     @IBAction func submitButtonClicked(_ sender: Any) {
+        if sections.count != 0 {
+            NotificationCenter.default.post(name: Notification.Name("FetchSections"), object: nil, userInfo: ["section": selectedSections])
+        }
         hide()
     }
-
+    
     func configView() {
         self.view.backgroundColor = .clear
         self.backView.backgroundColor = .black.withAlphaComponent(0.6)
@@ -66,20 +113,48 @@ class SectionPopUp: UIViewController {
             self.removeFromParent()
         }
     }
+    
+    private func setupCollectionViewLayout() {
+        self.collectionViewFlowLayout = UICollectionViewFlowLayout()
+        sectionCollectionView.setCollectionViewLayout(self.collectionViewFlowLayout, animated: true)
+    }
+    
+    private func updateCollectionViewItemSize() {
+        let lineSpacing: CGFloat = 0
+        let interItemSpacing:CGFloat = 5
+        let width = ((self.contentView.frame.width - (self.numberOfItemPerRow - 1) * interItemSpacing)) / self.numberOfItemPerRow
+        
+        collectionViewFlowLayout.itemSize = CGSize(width: Int(width), height: Int(width))
+        collectionViewFlowLayout.sectionInset = UIEdgeInsets.zero
+        collectionViewFlowLayout.scrollDirection = .vertical
+        collectionViewFlowLayout.minimumLineSpacing = lineSpacing
+        collectionViewFlowLayout.minimumInteritemSpacing = lineSpacing
+    }
 }
 
-extension SectionPopUp: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Section.allCases.count
+extension SectionPopUp: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return sections.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        50
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SectionTableViewCell") as! SectionTableViewCell
-        cell.setup(Section.allCases.last ?? Section.arts)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = sectionCollectionView.dequeueReusableCell(withReuseIdentifier: "SectionCollectionViewCell", for: indexPath) as! SectionCollectionViewCell
+        if selectedSections.contains(sections[indexPath.row]) {
+            cell.setup(sections[indexPath.row], backgroundColor: sections[indexPath.row].getColor(), isSelected: false)
+        }else {
+            cell.setup(sections[indexPath.row], backgroundColor: sections[indexPath.row].getColor(), isSelected: true)
+        }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if !selectedSections.contains(sections[indexPath.row]) && selectedSections.count < 3 {
+            selectedSections.append(sections[indexPath.row])
+        }else {
+            if let index = selectedSections.firstIndex(of: sections[indexPath.row]) {
+                selectedSections.remove(at: index)
+            }
+        }
+        sectionCollectionView.reloadData()
     }
 }

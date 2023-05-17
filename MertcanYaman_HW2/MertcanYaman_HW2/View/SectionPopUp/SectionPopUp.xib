@@ -13,7 +13,7 @@
             <connections>
                 <outlet property="backView" destination="oYd-dH-EGf" id="OiZ-ru-7S0"/>
                 <outlet property="contentView" destination="eA3-qc-vvf" id="x2J-Bh-xg0"/>
-                <outlet property="sectionTableView" destination="Ff6-PL-GNY" id="DQ6-wc-oHW"/>
+                <outlet property="sectionCollectionView" destination="2Fj-t1-MvQ" id="v7u-PN-D7i"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -27,38 +27,57 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eA3-qc-vvf">
-                    <rect key="frame" x="58.666666666666657" y="217.66666666666663" width="273" height="422"/>
+                    <rect key="frame" x="48.666666666666657" y="133" width="292.66666666666674" height="591"/>
                     <subviews>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="34a-XN-yUk">
-                            <rect key="frame" x="0.0" y="0.0" width="273" height="422"/>
+                            <rect key="frame" x="0.0" y="0.0" width="292.66666666666669" height="591"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Ub4-bQ-VZG">
-                                    <rect key="frame" x="0.0" y="8" width="273" height="398.66666666666669"/>
+                                    <rect key="frame" x="0.0" y="8" width="292.66666666666669" height="576"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Görmek istediğiniz haberleri işaretleyiniz." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AtW-pi-wyQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="273" height="39.333333333333336"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="292.66666666666669" height="39.333333333333336"/>
                                             <fontDescription key="fontDescription" name="GeezaPro-Bold" family="Geeza Pro" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ff6-PL-GNY">
-                                            <rect key="frame" x="0.0" y="51.333333333333343" width="273" height="295.33333333333326"/>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2Fj-t1-MvQ">
+                                            <rect key="frame" x="0.0" y="51.333333333333343" width="292.66666666666669" height="472.66666666666663"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        </tableView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9s-G7-n5e">
-                                            <rect key="frame" x="0.0" y="358.66666666666674" width="273" height="40"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="V7Q-yi-ie1">
+                                                <size key="itemSize" width="128" height="128"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                        </collectionView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nal-SJ-ASN">
+                                            <rect key="frame" x="0.0" y="536" width="292.66666666666669" height="40"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9s-G7-n5e">
+                                                    <rect key="frame" x="12" y="0.0" width="268.66666666666669" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="FSC-80-cse"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="filled" title="Gönder">
+                                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="18"/>
+                                                        <color key="baseBackgroundColor" red="0.2156862745" green="0.2784313725" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="submitButtonClicked:" destination="-1" eventType="touchUpInside" id="F8h-ZL-qlR"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="FSC-80-cse"/>
+                                                <constraint firstAttribute="trailing" secondItem="g9s-G7-n5e" secondAttribute="trailing" constant="12" id="4JB-j8-P3a"/>
+                                                <constraint firstItem="g9s-G7-n5e" firstAttribute="top" secondItem="Nal-SJ-ASN" secondAttribute="top" id="JLb-dl-MtV"/>
+                                                <constraint firstAttribute="bottom" secondItem="g9s-G7-n5e" secondAttribute="bottom" id="LPK-UA-01s"/>
+                                                <constraint firstItem="g9s-G7-n5e" firstAttribute="leading" secondItem="Nal-SJ-ASN" secondAttribute="leading" constant="12" id="dgp-pr-qru"/>
+                                                <constraint firstAttribute="height" constant="40" id="iAb-fq-fSl"/>
                                             </constraints>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="filled" title="Gönder">
-                                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="18"/>
-                                                <color key="baseBackgroundColor" red="0.2156862745" green="0.2784313725" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
-                                            </buttonConfiguration>
-                                            <connections>
-                                                <action selector="submitButtonClicked:" destination="-1" eventType="touchUpInside" id="F8h-ZL-qlR"/>
-                                            </connections>
-                                        </button>
+                                        </view>
                                     </subviews>
                                 </stackView>
                             </subviews>
@@ -75,7 +94,7 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="Ff6-PL-GNY" firstAttribute="height" secondItem="eA3-qc-vvf" secondAttribute="height" multiplier="0.7" id="2zB-Pe-FKT"/>
+                        <constraint firstItem="2Fj-t1-MvQ" firstAttribute="height" secondItem="eA3-qc-vvf" secondAttribute="height" multiplier="0.8" id="AzP-6X-Ir0"/>
                         <constraint firstAttribute="trailing" secondItem="34a-XN-yUk" secondAttribute="trailing" id="DNy-eF-wDV"/>
                         <constraint firstItem="34a-XN-yUk" firstAttribute="leading" secondItem="eA3-qc-vvf" secondAttribute="leading" id="kFQ-0F-hBQ"/>
                         <constraint firstAttribute="bottom" secondItem="34a-XN-yUk" secondAttribute="bottom" id="rFI-Dq-cfW"/>
@@ -88,10 +107,10 @@
             <constraints>
                 <constraint firstItem="eA3-qc-vvf" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="89p-yp-YOb"/>
                 <constraint firstItem="eA3-qc-vvf" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="EKG-lZ-CKd"/>
-                <constraint firstItem="eA3-qc-vvf" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="Eko-dz-aTM"/>
+                <constraint firstItem="eA3-qc-vvf" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.7" id="Eko-dz-aTM"/>
                 <constraint firstAttribute="bottom" secondItem="oYd-dH-EGf" secondAttribute="bottom" id="I29-ZP-06n"/>
                 <constraint firstItem="oYd-dH-EGf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VLa-9M-bBs"/>
-                <constraint firstItem="eA3-qc-vvf" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.7" id="a93-cr-Ln5"/>
+                <constraint firstItem="eA3-qc-vvf" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.75" id="a93-cr-Ln5"/>
                 <constraint firstItem="oYd-dH-EGf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vM5-8Y-ZYX"/>
                 <constraint firstAttribute="trailing" secondItem="oYd-dH-EGf" secondAttribute="trailing" id="xfh-Fr-N6D"/>
             </constraints>

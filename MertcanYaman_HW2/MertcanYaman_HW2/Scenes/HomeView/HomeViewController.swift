@@ -5,6 +5,7 @@
 //  Created by mertcan YAMAN on 11.05.2023.
 //
 import UIKit
+import NewsAPI
 
 class HomeViewController: UIViewController {
     
@@ -32,12 +33,14 @@ class HomeViewController: UIViewController {
         homeViewModel = HomeViewModel()
         collectionView.register(UINib(nibName: "SmallNewsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SmallNewsCollectionViewCell")
         slideCollectionView.register(UINib(nibName: "SlideNewsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SlideNewsCollectionViewCell")
-        homeViewModel.getData()
+        homeViewModel.getData([Section.home])
         setupCollectionViewLayout()
         loadingView.startAnimating()
         
         let sectionSelect = UITapGestureRecognizer(target: self, action: #selector(setSection))
         self.selectSecitonImage.addGestureRecognizer(sectionSelect)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(getSections(notification:)), name: Notification.Name("FetchSections"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,6 +71,17 @@ class HomeViewController: UIViewController {
             self.numberOfItemPerRow = 2
         } else {
             self.numberOfItemPerRow = 1
+        }
+    }
+    
+    @objc func getSections(notification: Notification) {
+        DispatchQueue.main.async {
+            self.loadingView.startAnimating()
+            self.loadingView.isHidden = false
+            self.outerView.isHidden = true
+        }
+        if let sections = notification.userInfo?.values.first as? [Section] {
+            homeViewModel.getData(sections)
         }
     }
     

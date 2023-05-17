@@ -26,7 +26,7 @@ class DetailViewController: UIViewController, SFSafariViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sectionView.setup(newsModel?.section ?? "", backgroundColor: UIColor(red: 55/255, green: 71/255, blue: 79/255, alpha: 1))
+        sectionView.setup(.home)
         guard let news = newsModel else { return }
         detailViewModel = DetailViewModel(news: news)
     }

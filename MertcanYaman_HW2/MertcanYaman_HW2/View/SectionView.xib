@@ -26,8 +26,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pbc-nG-5Ak">
                             <rect key="frame" x="0.0" y="0.0" width="110" height="30"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="avg-Th-L92">
-                                    <rect key="frame" x="6" y="0.0" width="98" height="30"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="avg-Th-L92">
+                                    <rect key="frame" x="4" y="0.0" width="102" height="30"/>
                                     <fontDescription key="fontDescription" name="Georgia-Bold" family="Georgia" pointSize="14"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -36,10 +36,10 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="avg-Th-L92" firstAttribute="centerY" secondItem="Pbc-nG-5Ak" secondAttribute="centerY" id="Q90-hb-bcJ"/>
-                                <constraint firstItem="avg-Th-L92" firstAttribute="leading" secondItem="Pbc-nG-5Ak" secondAttribute="leading" constant="6" id="RHh-Vf-T4l"/>
+                                <constraint firstItem="avg-Th-L92" firstAttribute="leading" secondItem="Pbc-nG-5Ak" secondAttribute="leading" constant="4" id="RHh-Vf-T4l"/>
                                 <constraint firstItem="avg-Th-L92" firstAttribute="top" secondItem="Pbc-nG-5Ak" secondAttribute="top" id="Rkh-e0-Tre"/>
                                 <constraint firstAttribute="bottom" secondItem="avg-Th-L92" secondAttribute="bottom" id="ey3-qR-pWk"/>
-                                <constraint firstAttribute="trailing" secondItem="avg-Th-L92" secondAttribute="trailing" constant="6" id="gDb-9S-vDE"/>
+                                <constraint firstAttribute="trailing" secondItem="avg-Th-L92" secondAttribute="trailing" constant="4" id="gDb-9S-vDE"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

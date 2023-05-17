@@ -21,7 +21,7 @@ class NewsTableViewCell: UITableViewCell {
         outerView.layer.shadowOffset = .zero
         outerView.layer.shadowRadius = 10
         self.titleLabel.text = newsPreview.title
-        self.sectionLabel.text = newsPreview.section.uppercased()
+        self.sectionLabel.text = newsPreview.section.rawValue.uppercased()
         self.newsImageView.image = UIImage(named: "deneme")
     }
 }

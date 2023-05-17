@@ -24,7 +24,7 @@ class NewsCollectionViewCell: UICollectionViewCell {
         outerView.layer.shadowOffset = .zero
         outerView.layer.shadowRadius = 12
         self.titleLabel.text = newsPreview.title
-        self.sectionLabel.text = newsPreview.section.uppercased()
+        self.sectionLabel.text = newsPreview.section.rawValue.uppercased()
         guard let imageUrl = URL(string: newsPreview.largeImageName) else { return }
         self.newsImageView.sd_setImage(with: imageUrl)
     }

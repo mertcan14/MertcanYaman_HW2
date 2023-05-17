@@ -26,8 +26,8 @@ class SectionTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setup(_ sectionName: Section) {
-        sectionView.setup(sectionName.rawValue, backgroundColor: UIColor.blue)
+    func setup(_ sectionName: Section, backgroundColor: String) {
+        sectionView.setup(sectionName)
     }
     
     @objc func selected() {

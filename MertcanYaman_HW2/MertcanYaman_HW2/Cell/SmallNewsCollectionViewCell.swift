@@ -9,10 +9,10 @@ import UIKit
 
 class SmallNewsCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var sectionView: SectionView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var authorName: UILabel!
     @IBOutlet weak var outerView: UIView!
-    @IBOutlet weak var sectionLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var smallImageView: UIImageView!
     override func awakeFromNib() {
@@ -20,12 +20,12 @@ class SmallNewsCollectionViewCell: UICollectionViewCell {
     }
 
     func setup(_ newsPreview: NewsPreview) {
+        sectionView.setup(newsPreview.section)
         outerView.layer.shadowColor = UIColor.black.cgColor
         outerView.layer.shadowOpacity = 0.8
         outerView.layer.shadowOffset = .zero
         outerView.layer.shadowRadius = 3
         self.titleLabel.text = newsPreview.title
-        self.sectionLabel.text = newsPreview.section.uppercased()
         authorName.text = newsPreview.author
         guard let imageUrl = URL(string: newsPreview.smalImageName) else { return }
         self.smallImageView.sd_setImage(with: imageUrl)

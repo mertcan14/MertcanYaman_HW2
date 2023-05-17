@@ -9,7 +9,7 @@ import Foundation
 
 public struct NewsResult: Decodable {
     public let status, copyright: String?
-    public let section: Section
+    public let section: Section?
     public let lastUpdated: Date?
     public let numResults: Int?
     public let results: [News]?
@@ -88,4 +88,61 @@ public enum Section: String, Decodable, CaseIterable {
     case upshot = "upshot"
     case us = "us"
     case world = "world"
+    
+    public func getColor() -> String {
+        switch self {
+        case .arts:
+            return "#e76f51"
+        case .automobiles:
+            return "#f4a261"
+        case .books:
+            return "#e9c46a"
+        case .business:
+            return "#2a9d8f"
+        case .fashion:
+            return "#264653"
+        case .food:
+            return "#fb8500"
+        case .health:
+            return "#ffb703"
+        case .home:
+            return "#344e41"
+        case .insider:
+            return "#023047"
+        case .magazine:
+            return "#219ebc"
+        case .movies:
+            return "#8ecae6"
+        case .nyregion:
+            return "#3a86ff"
+        case .obituaries:
+            return "#8338ec"
+        case .opinion:
+            return "#fb5607"
+        case .politics:
+            return "#386641"
+        case .realestate:
+            return "#38a3a5"
+        case .science:
+            return "#8d99ae"
+        case .sports:
+            return "#540b0e"
+        case .sundayreview:
+            return "#e09f3e"
+        case .technology:
+            return "#3d5a80"
+        case .theater:
+            return "#0fa3b1"
+        case .tmagazine:
+            return "#e07a5f"
+        case .travel:
+            return "#affc41"
+        case .upshot:
+            return "#3c1642"
+        case .us:
+            return "#f07167"
+        case .world:
+            return "#00296b"
+        }
+    }
 }
