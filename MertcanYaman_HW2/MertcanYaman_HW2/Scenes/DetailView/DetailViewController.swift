@@ -11,29 +11,40 @@ import SafariServices
 
 class DetailViewController: UIViewController, SFSafariViewControllerDelegate {
     
+    @IBOutlet weak var newsDateLabel: UILabel!
+    @IBOutlet weak var newsAuthor: UILabel!
+    @IBOutlet weak var backImageButton: UIImageView!
     @IBOutlet weak var detailImageView: UIImageView!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var sectionView: SectionView!
-    @IBOutlet weak var myNavigationBar: UINavigationBar!
     
     var detailViewModel: DetailViewModelProtocol! {
         didSet {
             detailViewModel.delegate = self
         }
     }
-    var newsModel: News?
+    var newsModel: NewsSection?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sectionView.setup(.home)
-        guard let news = newsModel else { return }
+        sectionView.setup(newsModel?.section ?? .home)
+        guard let news = newsModel?.result else { return }
         detailViewModel = DetailViewModel(news: news)
+        
+        let goBack = UITapGestureRecognizer(target: self, action: #selector(goBack))
+        self.backImageButton.addGestureRecognizer(goBack)
+        
+        detailImageView.clipsToBounds = true
+        detailImageView.layer.cornerRadius = 18
+        detailImageView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        titleLabel.text = newsModel?.title
-        contentLabel.text = newsModel?.abstract
+        newsDateLabel.text = "\(newsModel!.result!.publishedDate!)"
+        newsAuthor.text = newsModel?.result?.byline
+        titleLabel.text = newsModel?.result?.title
+        contentLabel.text = newsModel?.result?.abstract
         detailImageView.sd_setImage(with: detailViewModel.getImgUrlFromNews())
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
@@ -41,27 +52,10 @@ class DetailViewController: UIViewController, SFSafariViewControllerDelegate {
             appearance.shadowColor = .clear
             appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
             appearance.backgroundColor = UIColor(red: 55/255, green: 71/255, blue: 79/255, alpha: 1)
-            
-            myNavigationBar.scrollEdgeAppearance = appearance
-            myNavigationBar.standardAppearance = appearance
+
             UIApplication.shared.statusBarStyle = .lightContent
             
             let app = UIApplication.shared
-            let statusBarHeight: CGFloat = app.statusBarFrame.size.height
-            
-            let statusbarView = UIView()
-            statusbarView.backgroundColor = UIColor(red: 55/255, green: 71/255, blue: 79/255, alpha: 1)
-            view.addSubview(statusbarView)
-            
-            statusbarView.translatesAutoresizingMaskIntoConstraints = false
-            statusbarView.heightAnchor
-                .constraint(equalToConstant: statusBarHeight).isActive = true
-            statusbarView.widthAnchor
-                .constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
-            statusbarView.topAnchor
-                .constraint(equalTo: view.topAnchor).isActive = true
-            statusbarView.centerXAnchor
-                .constraint(equalTo: view.centerXAnchor).isActive = true
         } else {
             let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
             statusBar?.backgroundColor = UIColor.red
@@ -75,10 +69,9 @@ class DetailViewController: UIViewController, SFSafariViewControllerDelegate {
         present(vc, animated: true)
     }
     
-    @IBAction func clickBackButton(_ sender: UIBarButtonItem) {
+    @objc func goBack() {
         dismiss(animated: true)
     }
-    
 }
 
 extension DetailViewController: DetailViewModelDelegate {

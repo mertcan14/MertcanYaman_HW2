@@ -19,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D2F-a4-jzi">
-                        <rect key="frame" x="0.0" y="0.0" width="330" height="200"/>
+                        <rect key="frame" x="12" y="6" width="306" height="188"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="haber1" translatesAutoresizingMaskIntoConstraints="NO" id="fJf-HK-zYh">
-                                <rect key="frame" x="0.0" y="0.0" width="330" height="200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="306" height="188"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="12"/>
@@ -30,9 +30,9 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <visualEffectView opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAc-98-jyT">
-                                <rect key="frame" x="0.0" y="0.0" width="330" height="200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="306" height="188"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gFp-QN-hnR">
-                                    <rect key="frame" x="0.0" y="0.0" width="330" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="306" height="188"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="systemUltraThinMaterialDark"/>
@@ -52,8 +52,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="kuE-GV-I5q">
-                                <rect key="frame" x="2" y="89.666666666666657" width="24" height="21"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="kuE-GV-I5q">
+                                <rect key="frame" x="2" y="83.666666666666657" width="24" height="21"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Are-2u-Eka"/>
@@ -62,8 +62,8 @@
                                     <constraint firstAttribute="width" constant="24" id="xnq-7H-8WV"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Cbx-cp-0VJ">
-                                <rect key="frame" x="304" y="89.666666666666657" width="24" height="21"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Cbx-cp-0VJ">
+                                <rect key="frame" x="280" y="83.666666666666657" width="24" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -72,7 +72,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ISRO holds static test of Gaganyaan escape motor" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ps-hw-u1J">
-                                <rect key="frame" x="8" y="116" width="314" height="80"/>
+                                <rect key="frame" x="8" y="104" width="290" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="AEv-c4-5sO"/>
@@ -117,10 +117,10 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="D2F-a4-jzi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="9JA-G3-ZvW"/>
-                <constraint firstAttribute="trailing" secondItem="D2F-a4-jzi" secondAttribute="trailing" id="9ju-uh-GsE"/>
-                <constraint firstAttribute="bottom" secondItem="D2F-a4-jzi" secondAttribute="bottom" id="rsU-f1-OeK"/>
-                <constraint firstItem="D2F-a4-jzi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="sI2-xj-bnM"/>
+                <constraint firstItem="D2F-a4-jzi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="B0d-UU-rqW"/>
+                <constraint firstAttribute="trailing" secondItem="D2F-a4-jzi" secondAttribute="trailing" constant="12" id="Fjq-tw-pjg"/>
+                <constraint firstAttribute="bottom" secondItem="D2F-a4-jzi" secondAttribute="bottom" constant="6" id="Q6F-nG-nhK"/>
+                <constraint firstItem="D2F-a4-jzi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="6" id="hp5-bz-clp"/>
             </constraints>
             <size key="customSize" width="330" height="200"/>
             <userDefinedRuntimeAttributes>
@@ -131,6 +131,7 @@
             <connections>
                 <outlet property="leftArrow" destination="kuE-GV-I5q" id="szS-tN-FQ4"/>
                 <outlet property="newsImageView" destination="fJf-HK-zYh" id="Fpx-G6-88I"/>
+                <outlet property="outerView" destination="D2F-a4-jzi" id="Fvl-Du-axG"/>
                 <outlet property="rightArrow" destination="Cbx-cp-0VJ" id="mg0-ny-DJi"/>
                 <outlet property="sectionView" destination="PlQ-tY-r1L" id="jn1-zE-wYI"/>
                 <outlet property="titleLabel" destination="9Ps-hw-u1J" id="TIP-sj-tHu"/>

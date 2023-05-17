@@ -10,8 +10,6 @@ import NewsAPI
 class HomeViewController: UIViewController {
     
     var numberOfItemPerRow: CGFloat = 1
-    var collectionWidth: CGFloat = 0
-    var slideCollectionWidth: CGFloat = 0
     var collectionViewFlowLayout: UICollectionViewFlowLayout!
     var slideCollectionViewFlowLayout: UICollectionViewFlowLayout!
     var homeViewModel: HomeViewModelProtocol! {
@@ -20,7 +18,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var selectSecitonImage: UIImageView!
+    @IBOutlet weak var selectSectionImage: UIImageView!
     @IBOutlet weak var outerView: UIView!
     @IBOutlet weak var slideCollectionView: UICollectionView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -28,19 +26,14 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionWidth = collectionView.frame.width
-        slideCollectionWidth = slideCollectionView.frame.width
+        
         homeViewModel = HomeViewModel()
-        collectionView.register(UINib(nibName: "SmallNewsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SmallNewsCollectionViewCell")
-        slideCollectionView.register(UINib(nibName: "SlideNewsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SlideNewsCollectionViewCell")
-        homeViewModel.getData([Section.home])
+        homeViewModel.getDataMulti([Section.home])
+        collectionViewRegister()
         setupCollectionViewLayout()
         loadingView.startAnimating()
-        
-        let sectionSelect = UITapGestureRecognizer(target: self, action: #selector(setSection))
-        self.selectSecitonImage.addGestureRecognizer(sectionSelect)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(getSections(notification:)), name: Notification.Name("FetchSections"), object: nil)
+        setupNotificationCenter()
+        setGestureRecognizer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +42,7 @@ class HomeViewController: UIViewController {
             appearance.configureWithOpaqueBackground()
             appearance.shadowColor = .clear
             appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-            appearance.backgroundColor = UIColor(red: 55/255, green: 71/255, blue: 79/255, alpha: 1)
+            appearance.backgroundColor = UIColor(red: 137/255, green: 36/255, blue: 31/255, alpha: 1)
             
             navigationController?.navigationBar.scrollEdgeAppearance = appearance
             navigationController?.navigationBar.standardAppearance = appearance
@@ -57,6 +50,10 @@ class HomeViewController: UIViewController {
             // Fallback on earlier versions
         }
         UIApplication.shared.statusBarStyle = .lightContent
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.homeViewModel.timerStart()
     }
     
     override func viewDidLayoutSubviews() {
@@ -74,20 +71,30 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @objc func getSections(notification: Notification) {
+    @objc func getSections(notification: Notification) {
         DispatchQueue.main.async {
             self.loadingView.startAnimating()
             self.loadingView.isHidden = false
             self.outerView.isHidden = true
         }
-        if let sections = notification.userInfo?.values.first as? [Section] {
-            homeViewModel.getData(sections)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            if let sections = notification.userInfo?.values.first as? [Section] {
+                self.homeViewModel.getDataMulti(sections)
+            }
         }
     }
     
     @objc func setSection() {
         let sectionPopUp = SectionPopUp()
         sectionPopUp.appear(sender: self)
+    }
+    
+    @objc func goNextFromSlide() {
+        self.homeViewModel.goNextFromSlideCollection()
+    }
+    
+    @objc func goBackFromSlide() {
+        self.homeViewModel.goBackFromSlideCollection()
     }
     
     private func setupCollectionViewLayout() {
@@ -99,15 +106,15 @@ class HomeViewController: UIViewController {
     }
     
     private func updateSlideCollectionViewItemSize() {
-        let lineSpacing: CGFloat = 24
-        let width = self.view.safeAreaLayoutGuide.layoutFrame.width - 24
+        let lineSpacing: CGFloat = 4
+        let width = self.view.safeAreaLayoutGuide.layoutFrame.width - 4
         let height = 200
         
         slideCollectionViewFlowLayout.itemSize = CGSize(width: Int(width), height: height)
         slideCollectionViewFlowLayout.scrollDirection = .horizontal
         slideCollectionViewFlowLayout.minimumLineSpacing = lineSpacing
-        slideCollectionViewFlowLayout.sectionInset.left = 12
-        slideCollectionViewFlowLayout.sectionInset.right = 12
+        slideCollectionViewFlowLayout.sectionInset.left = 2
+        slideCollectionViewFlowLayout.sectionInset.right = 2
         slideCollectionView.decelerationRate = UIScrollView.DecelerationRate.fast
     }
     
@@ -122,6 +129,22 @@ class HomeViewController: UIViewController {
         collectionViewFlowLayout.scrollDirection = .vertical
         collectionViewFlowLayout.minimumLineSpacing = lineSpacing
         collectionViewFlowLayout.minimumInteritemSpacing = lineSpacing
+    }
+    
+    private func collectionViewRegister(){
+        collectionView.register(UINib(nibName: "SmallNewsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SmallNewsCollectionViewCell")
+        slideCollectionView.register(UINib(nibName: "SlideNewsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SlideNewsCollectionViewCell")
+    }
+    
+    private func setupNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(getSections(notification:)), name: Notification.Name("FetchSections"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(goBackFromSlide), name: Notification.Name("GoBack"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(goNextFromSlide), name: Notification.Name("GoNext"), object: nil)
+    }
+    
+    private func setGestureRecognizer() {
+        let sectionSelect = UITapGestureRecognizer(target: self, action: #selector(setSection))
+        self.selectSectionImage.addGestureRecognizer(sectionSelect)
     }
 }
 
@@ -159,9 +182,18 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         sendVC.modalTransitionStyle = .coverVertical
         present(sendVC, animated: true, completion: nil)
     }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let width = scrollView.frame.width
+        self.homeViewModel.currentCell = Int(scrollView.contentOffset.x / width)
+    }
 }
 
 extension HomeViewController: HomeViewModelDelegate {
+    func collectionViewScroll(indexPath: IndexPath) {
+        self.slideCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
     func collectionReloadData() {
         DispatchQueue.main.async {
             self.loadingView.stopAnimating()

@@ -11,6 +11,7 @@ import SDWebImage
 class SlideNewsCollectionViewCell: UICollectionViewCell {
 
 
+    @IBOutlet weak var outerView: UIView!
     @IBOutlet weak var sectionView: SectionView!
     @IBOutlet weak var rightArrow: UIImageView!
     @IBOutlet weak var leftArrow: UIImageView!
@@ -22,6 +23,14 @@ class SlideNewsCollectionViewCell: UICollectionViewCell {
     }
 
     func setup(_ newsPreview: NewsPreview, left: Bool, right: Bool) {
+        let back = UITapGestureRecognizer(target: self, action: #selector(goBack))
+        leftArrow.addGestureRecognizer(back)
+        let next = UITapGestureRecognizer(target: self, action: #selector(goNext))
+        rightArrow.addGestureRecognizer(next)
+        outerView.layer.shadowColor = UIColor.black.cgColor
+        outerView.layer.shadowOpacity = 0.8
+        outerView.layer.shadowOffset = .zero
+        outerView.layer.shadowRadius = 3
         self.titleLabel.text = newsPreview.title
         sectionView.setup(newsPreview.section)
         guard let imageUrl = URL(string: newsPreview.largeImageName) else { return }
@@ -36,5 +45,11 @@ class SlideNewsCollectionViewCell: UICollectionViewCell {
         }else {
             rightArrow.isHidden = true
         }
+    }
+    @objc func goBack() {
+        NotificationCenter.default.post(name: Notification.Name("GoBack"), object: nil)
+    }
+    @objc func goNext() {
+        NotificationCenter.default.post(name: Notification.Name("GoNext"), object: nil)
     }
 }

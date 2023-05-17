@@ -77,10 +77,10 @@ class SectionPopUp: UIViewController {
     }
     
     @IBAction func submitButtonClicked(_ sender: Any) {
-        if sections.count != 0 {
+        hide()
+        if selectedSections.count != 0 {
             NotificationCenter.default.post(name: Notification.Name("FetchSections"), object: nil, userInfo: ["section": selectedSections])
         }
-        hide()
     }
     
     func configView() {
