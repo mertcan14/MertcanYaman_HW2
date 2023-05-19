@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E59551B02A17910000A5BBB3 /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E59551AF2A17910000A5BBB3 /* DetailView.storyboard */; };
+		E59551B22A17914E00A5BBB3 /* NotConnectionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E59551B12A17914E00A5BBB3 /* NotConnectionView.storyboard */; };
 		E596E7AF2A16E91900863367 /* SectionPopUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E596E7AE2A16E91900863367 /* SectionPopUpViewModel.swift */; };
 		E5974FA02A1132880012C8C2 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5974F9F2A1132880012C8C2 /* SectionView.swift */; };
 		E5974FA22A11329E0012C8C2 /* SectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5974FA12A11329E0012C8C2 /* SectionView.xib */; };
@@ -38,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E59551AF2A17910000A5BBB3 /* DetailView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailView.storyboard; sourceTree = "<group>"; };
+		E59551B12A17914E00A5BBB3 /* NotConnectionView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotConnectionView.storyboard; sourceTree = "<group>"; };
 		E596E7AE2A16E91900863367 /* SectionPopUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionPopUpViewModel.swift; sourceTree = "<group>"; };
 		E5974F9F2A1132880012C8C2 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		E5974FA12A11329E0012C8C2 /* SectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionView.xib; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				E59802442A1776EC00F74BA0 /* NotConnectionViewController.swift */,
+				E59551B12A17914E00A5BBB3 /* NotConnectionView.storyboard */,
 			);
 			path = NotConnectionView;
 			sourceTree = "<group>";
@@ -105,6 +110,7 @@
 			children = (
 				E59A4B112A10C421001DC35D /* DetailViewController.swift */,
 				E5B450E22A12714C007F9716 /* DetailViewModel.swift */,
+				E59551AF2A17910000A5BBB3 /* DetailView.storyboard */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -283,7 +289,9 @@
 				E5ED78212A13F99800A7F534 /* SectionPopUp.xib in Resources */,
 				E59A52E52A0F7C9E004B8DEA /* SlideNewsCollectionViewCell.xib in Resources */,
 				E5978E982A1240EF0044F416 /* SmallNewsCollectionViewCell.xib in Resources */,
+				E59551B02A17910000A5BBB3 /* DetailView.storyboard in Resources */,
 				E5D7ECA72A1436810086F4A8 /* SectionCollectionViewCell.xib in Resources */,
+				E59551B22A17914E00A5BBB3 /* NotConnectionView.storyboard in Resources */,
 				E5974FA22A11329E0012C8C2 /* SectionView.xib in Resources */,
 				E5BDD53B2A0D101A009C2661 /* Main.storyboard in Resources */,
 			);

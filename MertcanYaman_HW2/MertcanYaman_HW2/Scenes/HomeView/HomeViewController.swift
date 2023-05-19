@@ -40,7 +40,7 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if !NetworkMonitor.shared.isConnected {
-            let sendVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NotConnectionViewController") as! NotConnectionViewController
+            let sendVC = UIStoryboard(name: "NotConnectionView", bundle: nil).instantiateViewController(withIdentifier: "NotConnectionViewController") as! NotConnectionViewController
             sendVC.modalPresentationStyle = .fullScreen
             sendVC.modalTransitionStyle = .coverVertical
             present(sendVC, animated: true, completion: nil)
@@ -223,7 +223,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let sendVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        let sendVC = UIStoryboard(name: "DetailView", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         if collectionView == self.collectionView {
             sendVC.newsModel = homeViewModel.getNews(indexPath.row + 4)
         }else {
