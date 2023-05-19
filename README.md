@@ -42,8 +42,8 @@ This app consists of;
 
 ![](https://github.com/mertcan14/MertcanYaman_HW2/blob/main/Gifs/sections.gif)
 
-![](https://github.com/mertcan14/MertcanYaman_HW2/blob/main/Gifs/landscapehome.gif)
-
 ![](https://github.com/mertcan14/MertcanYaman_HW2/blob/main/Gifs/landscapedetail.gif)
+
+![](https://github.com/mertcan14/MertcanYaman_HW2/blob/main/Gifs/landscapehome.gif)
 
 ![](https://github.com/mertcan14/MertcanYaman_HW2/blob/main/Gifs/landscapesections.gif)
