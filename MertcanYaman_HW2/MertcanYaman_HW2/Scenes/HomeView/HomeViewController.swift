@@ -9,6 +9,14 @@ import NewsAPI
 
 class HomeViewController: UIViewController {
     
+    // MARK: - IBOutlet Definitions
+    @IBOutlet weak var selectSectionImage: UIImageView!
+    @IBOutlet weak var outerView: UIView!
+    @IBOutlet weak var slideCollectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
+    
+    // MARK: - Variable Definitions
     var numberOfItemPerRow: CGFloat = 1
     var collectionViewFlowLayout: UICollectionViewFlowLayout!
     var slideCollectionViewFlowLayout: UICollectionViewFlowLayout!
@@ -18,25 +26,20 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var selectSectionImage: UIImageView!
-    @IBOutlet weak var outerView: UIView!
-    @IBOutlet weak var slideCollectionView: UICollectionView!
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var loadingView: UIActivityIndicatorView!
-    
+    // MARK: - Override Funcs in UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setLoading()
         homeViewModel = HomeViewModel()
         homeViewModel.getDataMulti([Section.home])
         collectionViewRegister()
         setupCollectionViewLayout()
-        loadingView.startAnimating()
         setupNotificationCenter()
         setGestureRecognizer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        checkDeviceOrientation()
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
@@ -56,6 +59,10 @@ class HomeViewController: UIViewController {
         self.homeViewModel.timerStart()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.homeViewModel.timerStop()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -71,24 +78,26 @@ class HomeViewController: UIViewController {
         }
     }
     
+    // MARK: - Sections Funcs
+    /// Retrieves selected sections from SectionPopUp
     @objc func getSections(notification: Notification) {
+        self.homeViewModel.timerStop()
         DispatchQueue.main.async {
             self.loadingView.startAnimating()
             self.loadingView.isHidden = false
             self.outerView.isHidden = true
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if let sections = notification.userInfo?.values.first as? [Section] {
                 self.homeViewModel.getDataMulti(sections)
             }
         }
     }
-    
+    /// Brings up the SectionPopUp
     @objc func setSection() {
         let sectionPopUp = SectionPopUp()
         sectionPopUp.appear(sender: self)
     }
     
+    // MARK: - SlideCollectionView Funcs
     @objc func goNextFromSlide() {
         self.homeViewModel.goNextFromSlideCollection()
     }
@@ -97,14 +106,8 @@ class HomeViewController: UIViewController {
         self.homeViewModel.goBackFromSlideCollection()
     }
     
-    private func setupCollectionViewLayout() {
-        self.collectionViewFlowLayout = UICollectionViewFlowLayout()
-        collectionView.setCollectionViewLayout(self.collectionViewFlowLayout, animated: true)
-        
-        self.slideCollectionViewFlowLayout = UICollectionViewFlowLayout()
-        slideCollectionView.setCollectionViewLayout(self.slideCollectionViewFlowLayout, animated: true)
-    }
-    
+    // MARK: - CollectionView Funcs
+    /// Resizes cells according to the Orientation of the device
     private func updateSlideCollectionViewItemSize() {
         let lineSpacing: CGFloat = 4
         let width = self.view.safeAreaLayoutGuide.layoutFrame.width - 4
@@ -118,6 +121,7 @@ class HomeViewController: UIViewController {
         slideCollectionView.decelerationRate = UIScrollView.DecelerationRate.fast
     }
     
+    /// Resizes cells according to the number of cells in the row according to the device's Orientation
     private func updateCollectionViewItemSize() {
         let lineSpacing: CGFloat = 0
         let interItemSpacing:CGFloat = 5
@@ -136,6 +140,20 @@ class HomeViewController: UIViewController {
         slideCollectionView.register(UINib(nibName: "SlideNewsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SlideNewsCollectionViewCell")
     }
     
+    private func checkDeviceOrientation() {
+        switch UIDevice.current.orientation{
+        case .portrait:
+            numberOfItemPerRow = 1
+        case .landscapeLeft:
+            numberOfItemPerRow = 2
+        case .landscapeRight:
+            numberOfItemPerRow = 2
+        default:
+            numberOfItemPerRow = 1
+        }
+    }
+    
+    // MARK: - Setup Funcs
     private func setupNotificationCenter() {
         NotificationCenter.default.addObserver(self, selector: #selector(getSections(notification:)), name: Notification.Name("FetchSections"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(goBackFromSlide), name: Notification.Name("GoBack"), object: nil)
@@ -146,8 +164,35 @@ class HomeViewController: UIViewController {
         let sectionSelect = UITapGestureRecognizer(target: self, action: #selector(setSection))
         self.selectSectionImage.addGestureRecognizer(sectionSelect)
     }
+    
+    private func setLoading() {
+        loadingView.startAnimating()
+        self.outerView.isHidden = true
+        self.loadingView.isHidden = false
+    }
+    
+    private func setupCollectionViewLayout() {
+        self.collectionViewFlowLayout = UICollectionViewFlowLayout()
+        collectionView.setCollectionViewLayout(self.collectionViewFlowLayout, animated: true)
+        
+        self.slideCollectionViewFlowLayout = UICollectionViewFlowLayout()
+        slideCollectionView.setCollectionViewLayout(self.slideCollectionViewFlowLayout, animated: true)
+    }
+    private func alertFunc() {
+        let alert = UIAlertController(title: "Sorry", message: "Unexpected error occurred redirecting to home page", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Go Home", style: .default, handler: { action in
+            switch action.style{
+                case .default:
+                self.homeViewModel.getDataMulti([Section.home])
+            @unknown default:
+                print("Error Alert Func")
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
+// MARK: - CollectionView Extension
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.collectionView {
@@ -189,18 +234,27 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
+// MARK: - HomeViewModelDelegate Extension
 extension HomeViewController: HomeViewModelDelegate {
     func collectionViewScroll(indexPath: IndexPath) {
         self.slideCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
     func collectionReloadData() {
-        DispatchQueue.main.async {
-            self.loadingView.stopAnimating()
-            self.collectionView.reloadData()
-            self.slideCollectionView.reloadData()
-            self.outerView.isHidden = false
-            self.loadingView.isHidden = true
+        if homeViewModel.numberOfNewsPreview == 0 {
+            DispatchQueue.main.async {
+                self.setLoading()
+                self.alertFunc()
+            }
+        }else {
+            DispatchQueue.main.async {
+                self.loadingView.stopAnimating()
+                self.collectionView.reloadData()
+                self.slideCollectionView.reloadData()
+                self.outerView.isHidden = false
+                self.loadingView.isHidden = true
+                self.homeViewModel.timerStart()
+            }
         }
     }
 }

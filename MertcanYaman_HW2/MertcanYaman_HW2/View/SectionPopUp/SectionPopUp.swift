@@ -10,14 +10,20 @@ import NewsAPI
 
 class SectionPopUp: UIViewController {
     
-    var numberOfItemPerRow: CGFloat = 3
-    var collectionViewFlowLayout: UICollectionViewFlowLayout!
-    var sections: [Section] = []
-    var selectedSections: [Section] = []
-    
+    // MARK: - IBOutlet Definitions
+    @IBOutlet weak var remianingChoice: UILabel!
     @IBOutlet weak var sectionCollectionView: UICollectionView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var backView: UIView!
+    
+    // MARK: - Variable Definitions
+    var numberOfItemPerRow: CGFloat = 3
+    var collectionViewFlowLayout: UICollectionViewFlowLayout!
+    var sectionViewModel: SectionPopUpViewModelProtocol! {
+        didSet {
+            sectionViewModel.delegate = self
+        }
+    }
     
     init() {
         super.init(nibName: "SectionPopUp", bundle: nil)
@@ -28,35 +34,27 @@ class SectionPopUp: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Override Funcs in UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
         setupCollectionViewLayout()
-        
-        for section in Section.allCases {
-            if section != .home {
-                sections.append(section)
-            }
-        }
+        sectionViewModel = SectionPopUpViewModel()
+        setCollectionView()
+        self.sectionViewModel.fetchSections()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(goBack))
         backView.addGestureRecognizer(tap)
-        
-        sectionCollectionView.dataSource = self
-        sectionCollectionView.delegate = self
-        sectionCollectionView.register(UINib(nibName: "SectionCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SectionCollectionViewCell")
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        switch UIDevice.current.orientation{
-        case .portrait:
-            numberOfItemPerRow = 3
-        case .landscapeLeft:
+
+    override func viewDidAppear(_ animated: Bool) {
+        let size = contentView.frame.size
+        if size.width > size.height {
             numberOfItemPerRow = 5
-        case .landscapeRight:
-            numberOfItemPerRow = 5
-        default:
+            updateCollectionViewItemSize()
+        }else {
             numberOfItemPerRow = 3
+            updateCollectionViewItemSize()
         }
     }
     
@@ -72,18 +70,18 @@ class SectionPopUp: UIViewController {
         }
     }
     
-    @objc func goBack() {
-        hide()
-    }
-    
     @IBAction func submitButtonClicked(_ sender: Any) {
         hide()
-        if selectedSections.count != 0 {
-            NotificationCenter.default.post(name: Notification.Name("FetchSections"), object: nil, userInfo: ["section": selectedSections])
+        if sectionViewModel.numberOfItemSelectedSection != 0 {
+            NotificationCenter.default.post(name: Notification.Name("FetchSections"), object: nil, userInfo: ["section": sectionViewModel.getSelectedSections()])
         }
     }
     
-    func configView() {
+    @objc func goBack() {
+        hide()
+    }
+    // MARK: - Configure PopUp
+    func configView() {
         self.view.backgroundColor = .clear
         self.backView.backgroundColor = .black.withAlphaComponent(0.6)
         self.backView.alpha = 0
@@ -113,7 +111,7 @@ class SectionPopUp: UIViewController {
             self.removeFromParent()
         }
     }
-    
+    // MARK: - Configure CollectionView
     private func setupCollectionViewLayout() {
         self.collectionViewFlowLayout = UICollectionViewFlowLayout()
         sectionCollectionView.setCollectionViewLayout(self.collectionViewFlowLayout, animated: true)
@@ -130,31 +128,55 @@ class SectionPopUp: UIViewController {
         collectionViewFlowLayout.minimumLineSpacing = lineSpacing
         collectionViewFlowLayout.minimumInteritemSpacing = lineSpacing
     }
+    
+    private func setCollectionView() {
+        sectionCollectionView.dataSource = self
+        sectionCollectionView.delegate = self
+        sectionCollectionView.register(UINib(nibName: "SectionCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SectionCollectionViewCell")
+    }
+    
+    private func setRemianingChoice() {
+        if sectionViewModel.numberOfItemSelectedSection == 3 {
+            DispatchQueue.main.async {
+                self.remianingChoice.text = "You have no choice left"
+            }
+        }else {
+            DispatchQueue.main.async {
+                self.remianingChoice.text = "You have a maximum of \(3 - self.sectionViewModel.numberOfItemSelectedSection) choices"
+            }
+        }
+    }
 }
 
+// MARK: - CollectionView Extension
 extension SectionPopUp: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sections.count
+        return sectionViewModel.numberOfItemSection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = sectionCollectionView.dequeueReusableCell(withReuseIdentifier: "SectionCollectionViewCell", for: indexPath) as! SectionCollectionViewCell
-        if selectedSections.contains(sections[indexPath.row]) {
-            cell.setup(sections[indexPath.row], backgroundColor: sections[indexPath.row].getColor(), isSelected: false)
+        guard let section = sectionViewModel.getSection(indexPath.row) else { return cell }
+        if sectionViewModel.checkSelectedSection(indexPath.row) {
+            cell.setup(section, backgroundColor: section.getColor(), isSelected: false)
         }else {
-            cell.setup(sections[indexPath.row], backgroundColor: sections[indexPath.row].getColor(), isSelected: true)
+            cell.setup(section, backgroundColor: section.getColor(), isSelected: true)
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if !selectedSections.contains(sections[indexPath.row]) && selectedSections.count < 3 {
-            selectedSections.append(sections[indexPath.row])
+        if !sectionViewModel.checkSelectedSection(indexPath.row) && sectionViewModel.numberOfItemSelectedSection < 3 {
+            sectionViewModel.appendToSelectedSections(indexPath.row)
         }else {
-            if let index = selectedSections.firstIndex(of: sections[indexPath.row]) {
-                selectedSections.remove(at: index)
-            }
+            sectionViewModel.removeToSelectedSections(indexPath.row)
         }
+        setRemianingChoice()
         sectionCollectionView.reloadData()
     }
+}
+
+// MARK: - SectionPopUpViewModelDelegate Extension
+extension SectionPopUp: SectionPopUpViewModelDelegate {
+    
 }

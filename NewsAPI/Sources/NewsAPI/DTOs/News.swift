@@ -92,37 +92,37 @@ public enum Section: String, Decodable, CaseIterable {
     public func getColor() -> String {
         switch self {
         case .arts:
-            return "#e76f51"
+            return "#F28705"
         case .automobiles:
-            return "#f4a261"
+            return "#253540"
         case .books:
-            return "#e9c46a"
+            return "#BF814B"
         case .business:
-            return "#2a9d8f"
+            return "#1F57AC"
         case .fashion:
-            return "#264653"
+            return "#F23D5E"
         case .food:
-            return "#fb8500"
+            return "#5B8C2A"
         case .health:
-            return "#ffb703"
+            return "#BFF205"
         case .home:
-            return "#344e41"
+            return "#89241F"
         case .insider:
-            return "#023047"
+            return "#63BFB6"
         case .magazine:
-            return "#219ebc"
+            return "#F20505"
         case .movies:
-            return "#8ecae6"
+            return "#F2B705"
         case .nyregion:
-            return "#3a86ff"
+            return "#1B2B40"
         case .obituaries:
-            return "#8338ec"
+            return "#0D0D0D"
         case .opinion:
-            return "#fb5607"
+            return "#FF8100"
         case .politics:
-            return "#386641"
+            return "#53575C"
         case .realestate:
-            return "#38a3a5"
+            return "#261C14"
         case .science:
             return "#8d99ae"
         case .sports:

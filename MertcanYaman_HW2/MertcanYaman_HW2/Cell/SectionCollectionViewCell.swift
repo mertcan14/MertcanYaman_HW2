@@ -19,7 +19,7 @@ class SectionCollectionViewCell: UICollectionViewCell {
     }
 
     func setup(_ sectionName: Section, backgroundColor: String, isSelected: Bool) {
-        self.sectionName.text = sectionName.rawValue
+        self.sectionName.text = sectionName.rawValue.capitalized
         outerView.backgroundColor = UIColor(hexString: backgroundColor)
         selectedImage.isHidden = isSelected
     }

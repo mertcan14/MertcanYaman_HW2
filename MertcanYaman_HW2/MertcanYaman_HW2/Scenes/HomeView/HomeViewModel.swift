@@ -8,11 +8,13 @@
 import Foundation
 import NewsAPI
 
+// MARK: HomeViewModel Delegate
 protocol HomeViewModelDelegate: AnyObject {
     func collectionReloadData()
     func collectionViewScroll(indexPath: IndexPath)
 }
 
+// MARK: HomeViewModel Protocol
 protocol HomeViewModelProtocol {
     var delegate: HomeViewModelDelegate? { get set }
     var numberOfNews: Int { get }
@@ -20,6 +22,7 @@ protocol HomeViewModelProtocol {
     var currentCell: Int { get set }
     
     func timerStart()
+    func timerStop()
     func getDataMulti(_ sections: [Section])
     func goBackFromSlideCollection()
     func goNextFromSlideCollection()
@@ -28,33 +31,30 @@ protocol HomeViewModelProtocol {
     func getSectionFromNews(_ index: Int) -> Section?
 }
 
+// MARK: HomeViewModel
 final class HomeViewModel {
     weak var delegate: HomeViewModelDelegate?
     let service: TopStoriesServiceProtocol = TopStoriesService()
     var currentCell = 0
-    var news: [NewsSection] = [] {
-        didSet {
-            self.news.shuffle()
-            self.setArray()
-        }
-    }
+    var timer: Timer = Timer()
+    var news: [NewsSection] = []
     var newsPreviews: [NewsPreview] = [] {
         didSet {
             self.delegate?.collectionReloadData()
         }
     }
     
+    /// Sends one or more requests to the API
     private func fetchDataMulti(_ sections: [Section]) {
         let group = DispatchGroup()
-        var newsSection: [NewsSection] = []
-        
+        self.news = []
         for section in sections {
             group.enter()
             service.fetchTopStories(section) { result in
                 switch result {
                 case .success(let data):
                     for aData in data {
-                        newsSection.append(NewsSection(section: section, result: aData))
+                        self.news.append(NewsSection(section: section, result: aData))
                     }
                     group.leave()
                 case .failure(let error):
@@ -64,12 +64,17 @@ final class HomeViewModel {
             }
         }
         group.wait()
-        self.news = newsSection
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { 
+            self.news.shuffle()
+            self.setNewsPreviews()
+        }
     }
     
-    private func setArray() {
+    /// Converts from NewsSection to NewsPreview
+    private func setNewsPreviews() {
         var newsPreviewArray: [NewsPreview] = []
         var deleteNews: [Int] = []
+        var deletedNews: Int = 0
         for index in 0 ..< self.news.count {
             if let small = self.news[index].result?.multimedia?[2].url, let large = self.news[index].result?.multimedia?[1].url, self.news[index].result?.title != "" {
                 newsPreviewArray.append(NewsPreview(title: self.news[index].result?.title ?? "title", section: self.news[index].section ?? .home, author: self.news[index].result?.byline ?? "Anonim", largeImageName: large, smalImageName: small))
@@ -78,17 +83,20 @@ final class HomeViewModel {
             }
         }
         for deleteNew in deleteNews {
-            self.news.remove(at: deleteNew)
+            self.news.remove(at: deleteNew - deletedNews)
+            deletedNews += 1
         }
         self.newsPreviews = newsPreviewArray
     }
     
+    /// Go to previous cell in the slide collection view
     @objc func goBack() {
         currentCell -= 1
         let indexPath = IndexPath(item: currentCell, section: 0)
         self.delegate?.collectionViewScroll(indexPath: indexPath)
     }
     
+    /// Go to next cell in the slide collection view
     @objc func goNext() {
         if currentCell == 3 {
             currentCell = 0
@@ -101,12 +109,22 @@ final class HomeViewModel {
         }
     }
     
-    func startTimer() {
-        _ = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.goNext), userInfo: nil, repeats: true);
+    /// Start timer for auto slide
+    private func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 6.0, target: self, selector: #selector(self.goNext), userInfo: nil, repeats: true);
+    }
+    
+    private func stopTimer() {
+        timer.invalidate()
     }
 }
 
+// MARK: HomeViewModel Extension
 extension HomeViewModel: HomeViewModelProtocol {
+    func timerStop() {
+        self.stopTimer()
+    }
+    
     func timerStart() {
         self.startTimer()
     }

@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SmallNewsCollectionViewCell" id="gTV-IL-0wX" customClass="SmallNewsCollectionViewCell" customModule="MertcanYaman_HW2" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SmallNewsCollectionViewCell" id="gTV-IL-0wX" customClass="SmallNewsCollectionViewCell" customModule="Info_Express" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="480" height="127"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -35,39 +35,53 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nail-Biter Turkish Election Heads for Round 2 as Majority Eludes Erdogan" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zM0-Fy-nZS">
-                                        <rect key="frame" x="123" y="8" width="333" height="34.333333333333336"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nail-Biter Turkish Election Heads for Round 2 as Majority Eludes Erdogan" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="zM0-Fy-nZS">
+                                        <rect key="frame" x="123" y="6" width="333" height="34.333333333333336"/>
                                         <fontDescription key="fontDescription" name="Georgia-Bold" family="Georgia" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="s46-YN-LSK">
-                                        <rect key="frame" x="123" y="66" width="333" height="16"/>
-                                        <fontDescription key="fontDescription" name="Georgia-BoldItalic" family="Georgia" pointSize="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="s46-YN-LSK">
+                                        <rect key="frame" x="123" y="76" width="337" height="15"/>
+                                        <fontDescription key="fontDescription" name="Georgia-BoldItalic" family="Georgia" pointSize="13"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L2h-F8-r2a" customClass="SectionView" customModule="MertcanYaman_HW2" customModuleProvider="target">
-                                        <rect key="frame" x="119" y="86" width="75" height="25"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="75" id="8O3-q5-sFd"/>
-                                            <constraint firstAttribute="height" constant="25" id="iVR-ZG-tI5"/>
-                                        </constraints>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYx-9X-g7o">
+                                        <rect key="frame" x="307.66666666666669" y="94.333333333333329" width="160.33333333333331" height="17.333333333333329"/>
+                                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabelLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAg-Wo-RyX">
+                                        <rect key="frame" x="323.66666666666669" y="95" width="128.33333333333331" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="SUc-Ha-dlU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="s46-YN-LSK" secondAttribute="trailing" constant="8" id="AqQ-yL-wA7"/>
-                                    <constraint firstItem="zM0-Fy-nZS" firstAttribute="top" secondItem="SAY-ym-1uk" secondAttribute="top" constant="8" id="D00-1x-cBy"/>
-                                    <constraint firstAttribute="bottom" secondItem="L2h-F8-r2a" secondAttribute="bottom" constant="4" id="Zs5-pf-qRs"/>
+                                    <constraint firstItem="TYx-9X-g7o" firstAttribute="centerY" secondItem="YAg-Wo-RyX" secondAttribute="centerY" id="Dvm-uD-dUT"/>
+                                    <constraint firstItem="YAg-Wo-RyX" firstAttribute="top" secondItem="s46-YN-LSK" secondAttribute="bottom" constant="4" id="HT3-sA-FsT"/>
+                                    <constraint firstItem="TYx-9X-g7o" firstAttribute="centerX" secondItem="YAg-Wo-RyX" secondAttribute="centerX" id="M9I-L3-uKK"/>
+                                    <constraint firstAttribute="trailing" secondItem="YAg-Wo-RyX" secondAttribute="trailing" constant="12" id="Mke-5u-vfL"/>
+                                    <constraint firstItem="TYx-9X-g7o" firstAttribute="width" secondItem="YAg-Wo-RyX" secondAttribute="width" multiplier="1.25:1" id="bw1-u7-sTY"/>
                                     <constraint firstAttribute="trailing" secondItem="zM0-Fy-nZS" secondAttribute="trailing" constant="8" id="c9h-Fr-Z6f"/>
                                     <constraint firstItem="s46-YN-LSK" firstAttribute="leading" secondItem="kC1-pP-8qE" secondAttribute="trailing" constant="8" symbolic="YES" id="cMR-T1-aIX"/>
-                                    <constraint firstItem="L2h-F8-r2a" firstAttribute="leading" secondItem="kC1-pP-8qE" secondAttribute="trailing" constant="4" id="eVb-uo-22x"/>
+                                    <constraint firstAttribute="bottom" secondItem="YAg-Wo-RyX" secondAttribute="bottom" constant="4" id="fba-oh-RsI"/>
                                     <constraint firstItem="kC1-pP-8qE" firstAttribute="top" secondItem="SAY-ym-1uk" secondAttribute="top" id="hbM-mj-yHV"/>
                                     <constraint firstItem="kC1-pP-8qE" firstAttribute="leading" secondItem="SAY-ym-1uk" secondAttribute="leading" id="hv9-ma-Agk"/>
+                                    <constraint firstItem="TYx-9X-g7o" firstAttribute="height" secondItem="YAg-Wo-RyX" secondAttribute="height" multiplier="1.1:1" id="lF4-35-wM5"/>
+                                    <constraint firstAttribute="trailing" secondItem="s46-YN-LSK" secondAttribute="trailing" constant="4" id="lil-Xe-VWU"/>
+                                    <constraint firstItem="zM0-Fy-nZS" firstAttribute="top" secondItem="SAY-ym-1uk" secondAttribute="top" constant="6" id="rl9-Rl-MXv"/>
                                     <constraint firstAttribute="bottom" secondItem="kC1-pP-8qE" secondAttribute="bottom" id="tOL-By-Vqu"/>
-                                    <constraint firstItem="L2h-F8-r2a" firstAttribute="top" secondItem="s46-YN-LSK" secondAttribute="bottom" constant="4" id="uQD-Y0-gVm"/>
                                     <constraint firstItem="zM0-Fy-nZS" firstAttribute="leading" secondItem="kC1-pP-8qE" secondAttribute="trailing" constant="8" symbolic="YES" id="zbv-i2-Sz5"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -99,7 +113,8 @@
                 <outlet property="authorName" destination="s46-YN-LSK" id="m9U-C0-3HJ"/>
                 <outlet property="containerView" destination="C07-Ub-GWk" id="O40-YQ-8hc"/>
                 <outlet property="outerView" destination="SAY-ym-1uk" id="4dT-aD-BCX"/>
-                <outlet property="sectionView" destination="L2h-F8-r2a" id="dwn-wH-QhN"/>
+                <outlet property="sectionLabel" destination="YAg-Wo-RyX" id="yiA-XT-W53"/>
+                <outlet property="sectionLabelBack" destination="TYx-9X-g7o" id="PhS-f6-SK7"/>
                 <outlet property="smallImageView" destination="kC1-pP-8qE" id="PNG-6A-dbJ"/>
                 <outlet property="titleLabel" destination="zM0-Fy-nZS" id="hom-TF-afA"/>
             </connections>
@@ -109,6 +124,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

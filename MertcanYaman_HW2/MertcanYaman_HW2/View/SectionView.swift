@@ -26,7 +26,7 @@ class SectionView: UIView {
     func setup(_ section: Section) {
         self.configureView()
         outerView.backgroundColor = UIColor(hexString: section.getColor())
-        sectionLabel.text = section.rawValue.uppercased()
+        sectionLabel.text = section.rawValue.capitalized
     }
     
     private func configureView() {

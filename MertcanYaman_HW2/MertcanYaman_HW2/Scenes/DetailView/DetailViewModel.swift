@@ -8,19 +8,12 @@
 import Foundation
 import NewsAPI
 
-protocol DetailViewModelDelegate: AnyObject {
-    
-}
-
 protocol DetailViewModelProtocol {
-    var delegate: DetailViewModelDelegate? { get set }
-    
     func getDetailUrl() -> URL?
     func getImgUrlFromNews() -> URL?
 }
 
 final class DetailViewModel {
-    var delegate: DetailViewModelDelegate?
     var news: News
     
     init(news: News) {
@@ -29,11 +22,13 @@ final class DetailViewModel {
 }
 
 extension DetailViewModel: DetailViewModelProtocol {
+    /// Return the URL of the detail news
     func getDetailUrl() -> URL? {
         guard let url = self.news.url else { return nil }
         return URL(string: url)
     }
     
+    /// Return the URL of the image of the news
     func getImgUrlFromNews() -> URL? {
         guard let url = self.news.multimedia?[1].url else { return nil }
         return URL(string: url)
