@@ -34,6 +34,7 @@ This app consists of;
 
 ## Videos Link
 **Portrait:** https://youtu.be/SFOYsUFqMTE
+
 **Landscape:** https://youtu.be/67RtnzHvmxA
 
 ## Screen Gifs
