@@ -44,7 +44,7 @@
                                     <constraint firstAttribute="height" constant="26" id="3Gh-WE-G98"/>
                                     <constraint firstAttribute="width" constant="26" id="XPg-QV-4JO"/>
                                 </constraints>
-                                <blurEffect style="systemUltraThinMaterialDark"/>
+                                <blurEffect style="regular"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="12"/>
@@ -76,10 +76,10 @@
                             <visualEffectView opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAc-98-jyT">
                                 <rect key="frame" x="0.0" y="115.33333333333331" width="306" height="72.666666666666686"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gFp-QN-hnR">
-                                    <rect key="frame" x="0.0" y="0.0" width="306" height="72.666666666666686"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="306" height="73"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <blurEffect style="systemThinMaterialDark"/>
+                                <blurEffect style="regular"/>
                             </visualEffectView>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ccf-15-HhN">
                                 <rect key="frame" x="280" y="82.666666666666657" width="26" height="23"/>

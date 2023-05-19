@@ -86,6 +86,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E59551B32A17B57800A5BBB3 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				E59802412A17723600F74BA0 /* NetworkMonitor.swift */,
+				E5BDD5332A0D101A009C2661 /* AppDelegate.swift */,
+				E5BDD5352A0D101A009C2661 /* SceneDelegate.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
 		E5974F9E2A1132690012C8C2 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,14 +166,12 @@
 		E5BDD5322A0D101A009C2661 /* MertcanYaman_HW2 */ = {
 			isa = PBXGroup;
 			children = (
+				E59551B32A17B57800A5BBB3 /* SupportingFiles */,
 				E5974F9E2A1132690012C8C2 /* View */,
 				E59A52E62A0F807C004B8DEA /* Scenes */,
 				E5C1B0262A0EFA1D003853F4 /* Extension */,
 				E5C1B0232A0EF1C6003853F4 /* Model */,
 				E5C1B01E2A0EEE60003853F4 /* Cell */,
-				E59802412A17723600F74BA0 /* NetworkMonitor.swift */,
-				E5BDD5332A0D101A009C2661 /* AppDelegate.swift */,
-				E5BDD5352A0D101A009C2661 /* SceneDelegate.swift */,
 				E5BDD53C2A0D101C009C2661 /* Assets.xcassets */,
 				E5BDD53E2A0D101C009C2661 /* LaunchScreen.storyboard */,
 				E5BDD5412A0D101C009C2661 /* Info.plist */,

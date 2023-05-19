@@ -78,14 +78,20 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9s-G7-n5e">
                                                     <rect key="frame" x="12" y="0.0" width="288" height="40"/>
+                                                    <color key="backgroundColor" red="0.53725490200000003" green="0.14117647059999999" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="FSC-80-cse"/>
                                                     </constraints>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="filled" title="Send">
+                                                    <buttonConfiguration key="configuration" style="plain" title="Send">
                                                         <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="18"/>
-                                                        <color key="baseBackgroundColor" red="0.53725490200000003" green="0.14117647059999999" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                                     </buttonConfiguration>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="12"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="submitButtonClicked:" destination="-1" eventType="touchUpInside" id="F8h-ZL-qlR"/>
                                                     </connections>
