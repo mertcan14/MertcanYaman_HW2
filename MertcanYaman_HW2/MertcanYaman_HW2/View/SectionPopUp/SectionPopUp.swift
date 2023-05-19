@@ -71,9 +71,11 @@ class SectionPopUp: UIViewController {
     }
     
     @IBAction func submitButtonClicked(_ sender: Any) {
-        hide()
-        if sectionViewModel.numberOfItemSelectedSection != 0 {
-            NotificationCenter.default.post(name: Notification.Name("FetchSections"), object: nil, userInfo: ["section": sectionViewModel.getSelectedSections()])
+        DispatchQueue.main.async {
+            self.hide()
+            if self.sectionViewModel.numberOfItemSelectedSection != 0 {
+                NotificationCenter.default.post(name: Notification.Name("FetchSections"), object: nil, userInfo: ["section": self.sectionViewModel.getSelectedSections()])
+            }
         }
     }
     

@@ -39,6 +39,12 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if !NetworkMonitor.shared.isConnected {
+            let sendVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NotConnectionViewController") as! NotConnectionViewController
+            sendVC.modalPresentationStyle = .fullScreen
+            sendVC.modalTransitionStyle = .coverVertical
+            present(sendVC, animated: true, completion: nil)
+        }
         checkDeviceOrientation()
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
@@ -178,7 +184,7 @@ class HomeViewController: UIViewController {
         self.slideCollectionViewFlowLayout = UICollectionViewFlowLayout()
         slideCollectionView.setCollectionViewLayout(self.slideCollectionViewFlowLayout, animated: true)
     }
-    private func alertFunc() {
+    private func alertFuncForErrorGetData() {
         let alert = UIAlertController(title: "Sorry", message: "Unexpected error occurred redirecting to home page", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Go Home", style: .default, handler: { action in
             switch action.style{
@@ -244,7 +250,7 @@ extension HomeViewController: HomeViewModelDelegate {
         if homeViewModel.numberOfNewsPreview == 0 {
             DispatchQueue.main.async {
                 self.setLoading()
-                self.alertFunc()
+                self.alertFuncForErrorGetData()
             }
         }else {
             DispatchQueue.main.async {
