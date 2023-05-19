@@ -32,15 +32,16 @@ This app consists of;
 | `section` | `string` | **required** News Category. **Default = "home"** |
 | `apikey` | `string` | **required** Your API Key. |
 
+## Videos Link
+**Portrait:** https://youtu.be/SFOYsUFqMTE
+**Landscape:** https://youtu.be/67RtnzHvmxA
+
 ## Screen Gifs
 
 ![](https://github.com/mertcan14/MertcanYaman_HW2/blob/main/Gifs/home.gif)
 ![](https://github.com/mertcan14/MertcanYaman_HW2/blob/main/Gifs/detail.gif)
 ![](https://github.com/mertcan14/MertcanYaman_HW2/blob/main/Gifs/notconnection.gif)
 ![](https://github.com/mertcan14/MertcanYaman_HW2/blob/main/Gifs/sections.gif)
-
 ![](https://github.com/mertcan14/MertcanYaman_HW2/blob/main/Gifs/landscapedetail.gif)
-
 ![](https://github.com/mertcan14/MertcanYaman_HW2/blob/main/Gifs/landscapehome.gif)
-
 ![](https://github.com/mertcan14/MertcanYaman_HW2/blob/main/Gifs/landscapesections.gif)
