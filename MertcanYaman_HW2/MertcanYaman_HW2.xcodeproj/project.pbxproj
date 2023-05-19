@@ -128,6 +128,7 @@
 		E59A52E72A0F8087004B8DEA /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
+				E5BDD5392A0D101A009C2661 /* Main.storyboard */,
 				E5BDD5372A0D101A009C2661 /* HomeViewController.swift */,
 				E59A52E82A0F80F3004B8DEA /* HomeViewModel.swift */,
 			);
@@ -163,7 +164,6 @@
 				E59802412A17723600F74BA0 /* NetworkMonitor.swift */,
 				E5BDD5332A0D101A009C2661 /* AppDelegate.swift */,
 				E5BDD5352A0D101A009C2661 /* SceneDelegate.swift */,
-				E5BDD5392A0D101A009C2661 /* Main.storyboard */,
 				E5BDD53C2A0D101C009C2661 /* Assets.xcassets */,
 				E5BDD53E2A0D101C009C2661 /* LaunchScreen.storyboard */,
 				E5BDD5412A0D101C009C2661 /* Info.plist */,
